@@ -29,7 +29,7 @@
         <!--Character View Controller-->
         <scene sceneID="dS8-SJ-Efx">
             <objects>
-                <viewController id="jDQ-Pf-aYN" userLabel="Character View Controller" sceneMemberID="viewController">
+                <viewController id="jDQ-Pf-aYN" userLabel="Character View Controller" customClass="CharactersViewController" customModule="SingleViewAppSwiftTemplate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HQV-on-9mQ"/>
                         <viewControllerLayoutGuide type="bottom" id="sOZ-9B-Isd"/>
@@ -308,6 +308,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="deM-X1-0rG"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="characterName" destination="7l0-gz-aO3" id="LKu-1b-n62"/>
+                        <outlet property="eyes" destination="KVq-di-C4X" id="ynL-0g-UcM"/>
+                        <outlet property="hair" destination="QC5-yk-mRC" id="huI-Fr-qzt"/>
+                        <outlet property="height" destination="KoG-hy-aRI" id="0ac-hG-yiA"/>
+                        <outlet property="homePlanet" destination="iQ6-LM-een" id="9UX-H7-KCx"/>
+                        <outlet property="largestCharacterDisplay" destination="l1i-qu-fkB" id="i8Z-uo-uZG"/>
+                        <outlet property="smallestCharacterDisplay" destination="FGW-06-c7r" id="vuv-yI-7Yl"/>
+                        <outlet property="yearBorn" destination="Nh0-Gf-ma3" id="UuC-dT-yYf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eiE-Tx-N0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -333,7 +343,7 @@
         <!--Vehicle View Controller-->
         <scene sceneID="WhK-JX-yhf">
             <objects>
-                <viewController id="4ri-ph-OlZ" userLabel="Vehicle View Controller" sceneMemberID="viewController">
+                <viewController id="4ri-ph-OlZ" userLabel="Vehicle View Controller" customClass="VehiclesViewController" customModule="SingleViewAppSwiftTemplate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2gH-af-mxZ"/>
                         <viewControllerLayoutGuide type="bottom" id="DFo-Uh-8uu"/>
@@ -355,6 +365,9 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vw-2s-NUE">
                                                 <rect key="frame" x="36" y="0.0" width="198.5" height="29"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="198.5" id="lna-Wc-xgj"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <color key="textColor" red="0.99874497070000001" green="0.97807776489999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -633,6 +646,18 @@
                     </view>
                     <navigationItem key="navigationItem" id="OFW-IG-1Hr"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="largestVehicle" destination="z0n-ba-dYh" id="TPM-KT-oeT"/>
+                        <outlet property="maxVehicleCrewNumber" destination="kTW-x7-Ojz" id="RWo-fn-ghc"/>
+                        <outlet property="smallestVehicle" destination="X3f-3s-tvT" id="xNJ-pp-My4"/>
+                        <outlet property="vehicleClass" destination="JEV-FC-G7v" id="201-xZ-vgv"/>
+                        <outlet property="vehicleCost" destination="sSo-3C-5hb" id="IER-GH-VSh"/>
+                        <outlet property="vehicleFullName" destination="4vw-2s-NUE" id="4vs-zH-B2H"/>
+                        <outlet property="vehicleLength" destination="zKA-3y-2WA" id="7hy-aB-suu"/>
+                        <outlet property="vehicleMake" destination="YPr-lX-150" id="USH-ml-kr2"/>
+                        <outlet property="vehicleMaxCrewNumber" destination="kTW-x7-Ojz" id="FSK-lk-PUR"/>
+                        <outlet property="vehicleName" destination="4vw-2s-NUE" id="4n5-JC-jcn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hM-1x-izi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -641,7 +666,7 @@
         <!--Option 2 Table Cell View Controller-->
         <scene sceneID="R7d-fs-UMk">
             <objects>
-                <viewController id="TSR-TD-JPk" userLabel="Option 2 Table Cell View Controller" sceneMemberID="viewController">
+                <viewController id="TSR-TD-JPk" userLabel="Option 2 Table Cell View Controller" customClass="HomeScreenTableViewController" customModule="SingleViewAppSwiftTemplate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zxF-od-VrK"/>
                         <viewControllerLayoutGuide type="bottom" id="hf2-H4-Lz5"/>
@@ -758,9 +783,11 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="characterButtonCell" destination="enV-tb-Xqt" id="eCb-ku-KDH"/>
+                        <outlet property="starshipButtonCell" destination="xMJ-WH-zpL" id="IsD-Kn-XoH"/>
+                        <outlet property="vehicleButtonCell" destination="C5Q-wQ-PgK" id="ArH-jP-ycd"/>
                         <segue destination="SLH-6S-Kpb" kind="show" id="83d-e2-Y8E"/>
                         <segue destination="Bnu-Ew-XuU" kind="show" id="mpZ-ML-yql"/>
-                        <segue destination="GYs-CC-THd" kind="show" id="fwM-Wh-0aT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hc-JW-hRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -787,7 +814,7 @@
         <!--Starship View Controller-->
         <scene sceneID="Rst-kH-y3X">
             <objects>
-                <viewController id="zAn-Yk-tJM" userLabel="Starship View Controller" sceneMemberID="viewController">
+                <viewController id="zAn-Yk-tJM" userLabel="Starship View Controller" customClass="StarshipsViewController" customModule="SingleViewAppSwiftTemplate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gKZ-4b-rRb"/>
                         <viewControllerLayoutGuide type="bottom" id="8Nu-qT-q7f"/>
@@ -1087,6 +1114,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="MRP-P6-c52"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="largestStarship" destination="gl0-23-qBW" id="pA7-7R-xRZ"/>
+                        <outlet property="smallestStarship" destination="UsX-1y-xbB" id="UKS-qK-wWW"/>
+                        <outlet property="starshipClass" destination="s7U-U3-X7a" id="i97-cg-B7V"/>
+                        <outlet property="starshipCost" destination="I77-9P-nat" id="xzC-6B-N48"/>
+                        <outlet property="starshipLength" destination="hnk-0X-VJI" id="Yzk-MZ-x2k"/>
+                        <outlet property="starshipMake" destination="qgf-v8-gT5" id="T9T-HR-HGF"/>
+                        <outlet property="starshipMaxCrewNumber" destination="7oh-jp-365" id="0fX-8o-EEu"/>
+                        <outlet property="starshipName" destination="knj-ZB-07I" id="lvd-aJ-ZJA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="as1-Yg-khy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
