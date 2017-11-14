@@ -12,6 +12,7 @@ import UIKit
 
 class VehiclesViewController: UIViewController {
 
+    @IBOutlet weak var vehiclesPickerView: UIPickerView!
     @IBOutlet weak var largestVehicle: UILabel!
     @IBOutlet weak var smallestVehicle: UILabel!
     @IBOutlet weak var vehicleMaxCrewNumber: UILabel!

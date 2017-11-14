@@ -12,6 +12,7 @@ import UIKit
 
 class StarshipsViewController: UIViewController {
 
+    @IBOutlet weak var starshipsPickerView: UIPickerView!
     @IBOutlet weak var largestStarship: UILabel!
     @IBOutlet weak var smallestStarship: UILabel!
     @IBOutlet weak var starshipMaxCrewNumber: UILabel!
@@ -20,6 +21,8 @@ class StarshipsViewController: UIViewController {
     @IBOutlet weak var starshipClass: UILabel!
     @IBOutlet weak var starshipMake: UILabel!
     @IBOutlet weak var starshipName: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -12,6 +12,7 @@ import UIKit
 
 class CharactersViewController: UIViewController {
     
+    @IBOutlet weak var charactersPickerView: UIPickerView!
     @IBOutlet weak var largestCharacterDisplay: UILabel!
     @IBOutlet weak var smallestCharacterDisplay: UILabel!
     @IBOutlet weak var hair: UILabel!

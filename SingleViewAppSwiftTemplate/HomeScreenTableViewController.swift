@@ -16,9 +16,23 @@ class HomeScreenTableViewController: UITableViewController {
     @IBOutlet weak var vehicleButtonCell: UITableViewCell!
     @IBOutlet weak var characterButtonCell: UITableViewCell!
     
+    @IBAction func charactersButton(_ sender: Any) {
+    }
+    @IBAction func charactersIconButton(_ sender: Any) {
+    }
+    @IBAction func vehiclesIconButton(_ sender: Any) {
+    }
+    @IBAction func vehiclesButton(_ sender: Any) {
+    }
+    @IBAction func starshipTextButton(_ sender: Any) {
+    }
+    @IBAction func starshipIconButton(_ sender: Any) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

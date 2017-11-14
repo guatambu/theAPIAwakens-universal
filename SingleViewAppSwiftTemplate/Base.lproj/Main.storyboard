@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TSR-TD-JPk">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -310,6 +310,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="characterName" destination="7l0-gz-aO3" id="LKu-1b-n62"/>
+                        <outlet property="charactersPickerView" destination="WBH-Ip-SFv" id="eEN-r5-Wdk"/>
                         <outlet property="eyes" destination="KVq-di-C4X" id="ynL-0g-UcM"/>
                         <outlet property="hair" destination="QC5-yk-mRC" id="huI-Fr-qzt"/>
                         <outlet property="height" destination="KoG-hy-aRI" id="0ac-hG-yiA"/>
@@ -364,9 +365,9 @@
                                         <rect key="frame" x="25" y="15" width="270" height="234.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vw-2s-NUE">
-                                                <rect key="frame" x="36" y="0.0" width="198.5" height="29"/>
+                                                <rect key="frame" x="35" y="0.0" width="200" height="29"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="198.5" id="lna-Wc-xgj"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="lna-Wc-xgj"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <color key="textColor" red="0.99874497070000001" green="0.97807776489999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -657,16 +658,17 @@
                         <outlet property="vehicleMake" destination="YPr-lX-150" id="USH-ml-kr2"/>
                         <outlet property="vehicleMaxCrewNumber" destination="kTW-x7-Ojz" id="FSK-lk-PUR"/>
                         <outlet property="vehicleName" destination="4vw-2s-NUE" id="4n5-JC-jcn"/>
+                        <outlet property="vehiclesPickerView" destination="bY0-7A-qS7" id="Ne3-mE-jfc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hM-1x-izi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="495" y="-30"/>
         </scene>
-        <!--Option 2 Table Cell View Controller-->
+        <!--Home Screen Table Cell View Controller-->
         <scene sceneID="R7d-fs-UMk">
             <objects>
-                <viewController id="TSR-TD-JPk" userLabel="Option 2 Table Cell View Controller" customClass="HomeScreenTableViewController" customModule="SingleViewAppSwiftTemplate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TSR-TD-JPk" userLabel="Home Screen Table Cell View Controller" customClass="HomeScreenTableViewController" customModule="SingleViewAppSwiftTemplate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zxF-od-VrK"/>
                         <viewControllerLayoutGuide type="bottom" id="hf2-H4-Lz5"/>
@@ -685,23 +687,32 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="4Jf-9g-0q5">
-                                                    <rect key="frame" x="110" y="31.5" width="100" height="126.5"/>
+                                                    <rect key="frame" x="0.0" y="25.5" width="320" height="139"/>
                                                     <subviews>
-                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="icon-characters" translatesAutoresizingMaskIntoConstraints="NO" id="ev7-RX-Hgp">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Characters" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ey4-rC-FSO">
-                                                            <rect key="frame" x="0.0" y="106" width="100" height="20.5"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvS-7e-x6k" userLabel="Character Icon Button">
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                                            <color key="tintColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal" image="icon-characters"/>
+                                                            <connections>
+                                                                <action selector="charactersIconButton:" destination="TSR-TD-JPk" eventType="touchUpInside" id="kWd-wV-4Ts"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHO-Lt-f1h">
+                                                            <rect key="frame" x="0.0" y="106" width="320" height="33"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                            <color key="textColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <color key="tintColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal" title="Characters"/>
+                                                            <connections>
+                                                                <action selector="charactersButton:" destination="TSR-TD-JPk" eventType="touchUpInside" id="Wep-aF-AA7"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="4Jf-9g-0q5" firstAttribute="centerY" secondItem="f4l-S6-30r" secondAttribute="centerY" id="GPg-QE-d0H"/>
+                                                <constraint firstItem="dvS-7e-x6k" firstAttribute="leading" secondItem="f4l-S6-30r" secondAttribute="leading" id="PPY-w9-wYm"/>
                                                 <constraint firstItem="4Jf-9g-0q5" firstAttribute="centerX" secondItem="f4l-S6-30r" secondAttribute="centerX" id="bi0-46-wkI"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -715,22 +726,30 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="cx4-CR-mFx">
-                                                    <rect key="frame" x="110" y="31" width="100" height="126.5"/>
+                                                    <rect key="frame" x="0.0" y="25" width="320" height="139"/>
                                                     <subviews>
-                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="icon-vehicles" translatesAutoresizingMaskIntoConstraints="NO" id="hkC-2Z-BLs">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicles" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9I-du-Y9H">
-                                                            <rect key="frame" x="0.0" y="106" width="100" height="20.5"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2bE-1b-nKR" userLabel="Vehicle Icon Button">
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                                            <state key="normal" image="icon-vehicles"/>
+                                                            <connections>
+                                                                <action selector="vehiclesIconButton:" destination="TSR-TD-JPk" eventType="touchUpInside" id="eI2-tl-1tM"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNf-RD-6q4" userLabel="Vehicles">
+                                                            <rect key="frame" x="0.0" y="106" width="320" height="33"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                            <color key="textColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <color key="tintColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal" title="Vehicles"/>
+                                                            <connections>
+                                                                <action selector="vehiclesButton:" destination="TSR-TD-JPk" eventType="touchUpInside" id="bQ3-Ft-2QK"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="2bE-1b-nKR" firstAttribute="leading" secondItem="wpP-qH-han" secondAttribute="leading" id="5Lg-se-VWn"/>
                                                 <constraint firstItem="cx4-CR-mFx" firstAttribute="centerY" secondItem="wpP-qH-han" secondAttribute="centerY" id="ljc-2d-RRL"/>
                                                 <constraint firstItem="cx4-CR-mFx" firstAttribute="centerX" secondItem="wpP-qH-han" secondAttribute="centerX" id="q0E-uD-TV1"/>
                                             </constraints>
@@ -745,23 +764,31 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="BPO-Ln-lVd">
-                                                    <rect key="frame" x="110" y="31.5" width="100" height="126.5"/>
+                                                    <rect key="frame" x="0.0" y="25.5" width="320" height="139"/>
                                                     <subviews>
-                                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="icon-starships" translatesAutoresizingMaskIntoConstraints="NO" id="zOZ-NN-RwZ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starships" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dS-bM-gfy">
-                                                            <rect key="frame" x="0.0" y="106" width="100" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPc-lg-jhe" userLabel="Starship Icon Button">
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                                            <state key="normal" image="icon-starships"/>
+                                                            <connections>
+                                                                <action selector="starshipIconButton:" destination="TSR-TD-JPk" eventType="touchUpInside" id="uyA-RM-TFh"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yuy-cJ-iLl">
+                                                            <rect key="frame" x="0.0" y="106" width="320" height="33"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                            <color key="tintColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <state key="normal" title="Starships"/>
+                                                            <connections>
+                                                                <action selector="starshipTextButton:" destination="TSR-TD-JPk" eventType="touchUpInside" id="3LC-4M-e6E"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="BPO-Ln-lVd" firstAttribute="centerX" secondItem="0jQ-ci-1RV" secondAttribute="centerX" id="hCa-mR-RPK"/>
+                                                <constraint firstItem="iPc-lg-jhe" firstAttribute="leading" secondItem="0jQ-ci-1RV" secondAttribute="leading" id="oV8-4i-MGi"/>
                                                 <constraint firstItem="BPO-Ln-lVd" firstAttribute="centerY" secondItem="0jQ-ci-1RV" secondAttribute="centerY" id="xZe-2Q-Qhb"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -788,6 +815,7 @@
                         <outlet property="vehicleButtonCell" destination="C5Q-wQ-PgK" id="ArH-jP-ycd"/>
                         <segue destination="SLH-6S-Kpb" kind="show" id="83d-e2-Y8E"/>
                         <segue destination="Bnu-Ew-XuU" kind="show" id="mpZ-ML-yql"/>
+                        <segue destination="GYs-CC-THd" kind="show" id="nkH-CD-yqG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hc-JW-hRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1123,6 +1151,7 @@
                         <outlet property="starshipMake" destination="qgf-v8-gT5" id="T9T-HR-HGF"/>
                         <outlet property="starshipMaxCrewNumber" destination="7oh-jp-365" id="0fX-8o-EEu"/>
                         <outlet property="starshipName" destination="knj-ZB-07I" id="lvd-aJ-ZJA"/>
+                        <outlet property="starshipsPickerView" destination="aU8-ct-nz6" id="Gcg-Ql-pYC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="as1-Yg-khy" userLabel="First Responder" sceneMemberID="firstResponder"/>
