@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StarshipsViewController: UIViewController {
+class StarshipsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var starshipsPickerView: UIPickerView!
     @IBOutlet weak var largestStarship: UILabel!
@@ -20,6 +20,7 @@ class StarshipsViewController: UIViewController {
     @IBOutlet weak var starshipMake: UILabel!
     @IBOutlet weak var starshipName: UILabel!
     
+    var pickerData: [String] = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +32,38 @@ class StarshipsViewController: UIViewController {
         
         displayStartshipInfo(using: currentStarshipModel)
         
+        self.starshipsPickerView.delegate = self
+        self.starshipsPickerView.dataSource = self
+        pickerData = ["Millenium Falcon", "Coronet", "Imperial Light Cruiser", "Imperial Star Destroyer", "Naboo Royal Starship", "Nebulon-B Frigate", "Republic Attack Cruiser", "Death Star", "Mon Calamari Starship"]
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }    
+    }
+    
+    
+    // The number of picker columns of data
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    // The data to return for the row and component (column) that's being passed in
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    // Catpure the picker view selection
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // This method is triggered whenever the user makes a change to the picker selection.
+        // The parameter named row and component represents what was selected.
+    }
+    
 
     func displayStartshipInfo(using starshipViewModel: StarshipViewModel) {
         starshipName.text = starshipViewModel.name
