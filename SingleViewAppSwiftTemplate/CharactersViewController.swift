@@ -6,6 +6,8 @@
 //  Copyright © 2017 Treehouse. All rights reserved.
 //
 
+// need to create implementation for the smallest and largest data properties and stub subsequent data
+
 import UIKit
 
 class CharactersViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
