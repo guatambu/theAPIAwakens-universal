@@ -11,6 +11,7 @@ import Foundation
 
 enum Errors_API_Awakens: Error {
     case stringNotInteger(String)
+    case stringNotDouble(String)
     
     
 }

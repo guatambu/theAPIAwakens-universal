@@ -6,11 +6,15 @@
 //  Copyright © 2017 Treehouse. All rights reserved.
 //
 
+
+// need to create implementation for the smallest and largest data properties and stub subsequent data
+
 import UIKit
 
 class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var vehiclesPickerView: UIPickerView!
+    var pickerData: [String] = [String]()
     
     @IBOutlet weak var largestVehicle: UILabel!
     @IBOutlet weak var smallestVehicle: UILabel!
@@ -21,7 +25,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var vehicleMake: UILabel!
     @IBOutlet weak var vehicleName: UILabel!
     
-    var pickerData: [String] = [String]()
+    
     
     
     override func viewDidLoad() {
@@ -30,13 +34,18 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // Do any additional setup after loading the view.
         
         let currentVehicle = Vehicle(id: 1, name: "X-34 landspeeder", make: "SoroSuub Corporation", cost_in_credits: "10550", length: "3.4", vehicle_class: "repulsorcraft", crew: "1")
-        let currentVehicleModel = VehicleViewModel(model: currentVehicle)
+        do {
+            let currentVehicleModel = try VehicleViewModel(model: currentVehicle)
+            displayVehicleInformation(using: currentVehicleModel)
+        } catch Errors_API_Awakens.stringNotInteger {
+            print("invalid entry on 'length' property")
+        } catch {
+            print("error in API pachkaged JSON")
+        }
         
         self.vehiclesPickerView.delegate = self
         self.vehiclesPickerView.dataSource = self
         pickerData = ["AT-AT Walker", "H-Type Nubian Yacht", "Jumspeeder", "Podracer", "Snow Speeder", "Sith Speeder", "Speeder Bike", "X-34 Landspeedr", ]
-        
-        displayVehicleInformation(using: currentVehicleModel)
         
         
         

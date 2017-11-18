@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TSR-TD-JPk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pnm-ZH-fGW">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -42,12 +42,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QvL-mx-Om0" userLabel="Character Drk Bckgrnd View">
                                 <rect key="frame" x="0.0" y="64" width="320" height="264"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="d5f-Pk-x4H" userLabel="Character Stack View">
-                                        <rect key="frame" x="25" y="19" width="270" height="227"/>
+                                        <rect key="frame" x="25.5" y="19" width="270" height="227"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Character Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7l0-gz-aO3">
                                                 <rect key="frame" x="43.5" y="0.0" width="183.5" height="29"/>
@@ -306,7 +307,7 @@
                             <constraint firstAttribute="trailing" secondItem="QvL-mx-Om0" secondAttribute="trailing" id="xt8-Kp-uhR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="deM-X1-0rG"/>
+                    <navigationItem key="navigationItem" title="Characters" id="deM-X1-0rG"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="characterName" destination="7l0-gz-aO3" id="LKu-1b-n62"/>
@@ -323,6 +324,123 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eiE-Tx-N0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="495" y="-757"/>
+        </scene>
+        <!--Home Screen View Controller-->
+        <scene sceneID="Nw5-w6-niB">
+            <objects>
+                <tableViewController id="Pnm-ZH-fGW" customClass="HomeScreenViewController" customModule="SingleViewAppSwiftTemplate" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nUM-w3-eAs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="vxa-JX-PQr">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jf9-iu-EzX">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jf9-iu-EzX" id="C4N-3G-ggs">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sde-LY-K0i">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <color key="tintColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <inset key="titleEdgeInsets" minX="0.0" minY="-120" maxX="0.0" maxY="0.0"/>
+                                                    <inset key="imageEdgeInsets" minX="90" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="Characters" image="icon-characters">
+                                                        <color key="titleColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="charactersSegueButton:" destination="Pnm-ZH-fGW" eventType="touchUpInside" id="crv-b6-6u9"/>
+                                                        <segue destination="Bnu-Ew-XuU" kind="presentation" id="IWp-jB-8Eb"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="Sde-LY-K0i" firstAttribute="top" secondItem="C4N-3G-ggs" secondAttribute="top" id="KEQ-jT-4kt"/>
+                                                <constraint firstAttribute="trailing" secondItem="Sde-LY-K0i" secondAttribute="trailing" id="L1Q-y5-RS9"/>
+                                                <constraint firstAttribute="bottom" secondItem="Sde-LY-K0i" secondAttribute="bottom" id="QDL-nU-knY"/>
+                                                <constraint firstItem="Sde-LY-K0i" firstAttribute="leading" secondItem="C4N-3G-ggs" secondAttribute="leading" id="ovR-U2-scY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="a45-PW-IfC">
+                                        <rect key="frame" x="0.0" y="44" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a45-PW-IfC" id="RBb-XN-fEg">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xk4-C5-wvL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <color key="tintColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <inset key="titleEdgeInsets" minX="0.0" minY="-120" maxX="0.0" maxY="0.0"/>
+                                                    <inset key="imageEdgeInsets" minX="70" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="Vehicles" image="icon-vehicles">
+                                                        <color key="titleColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="vehiclesSegueButton:" destination="Pnm-ZH-fGW" eventType="touchUpInside" id="OdY-OO-WEy"/>
+                                                        <segue destination="SLH-6S-Kpb" kind="presentation" id="fJf-nz-Sib"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="xk4-C5-wvL" secondAttribute="trailing" id="6Cq-bm-TpU"/>
+                                                <constraint firstItem="xk4-C5-wvL" firstAttribute="leading" secondItem="RBb-XN-fEg" secondAttribute="leading" id="Dzf-5Z-CUC"/>
+                                                <constraint firstItem="xk4-C5-wvL" firstAttribute="top" secondItem="RBb-XN-fEg" secondAttribute="top" id="UzL-QZ-2gy"/>
+                                                <constraint firstAttribute="bottom" secondItem="xk4-C5-wvL" secondAttribute="bottom" id="kAg-dP-2rD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="0f8-I6-J1y">
+                                        <rect key="frame" x="0.0" y="88" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0f8-I6-J1y" id="oPy-CN-C5M">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQN-GG-CD4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <color key="tintColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <inset key="titleEdgeInsets" minX="0.0" minY="-120" maxX="0.0" maxY="0.0"/>
+                                                    <inset key="imageEdgeInsets" minX="78" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <state key="normal" title="Starships" image="icon-starships">
+                                                        <color key="titleColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="starshipsSegueButton:" destination="Pnm-ZH-fGW" eventType="touchUpInside" id="VLq-HZ-dvY"/>
+                                                        <segue destination="GYs-CC-THd" kind="presentation" id="c3b-p9-Kfb"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="NQN-GG-CD4" firstAttribute="top" secondItem="oPy-CN-C5M" secondAttribute="top" id="1Ph-qC-Tcm"/>
+                                                <constraint firstItem="NQN-GG-CD4" firstAttribute="leading" secondItem="oPy-CN-C5M" secondAttribute="leading" id="Fxx-wz-OYr"/>
+                                                <constraint firstAttribute="bottom" secondItem="NQN-GG-CD4" secondAttribute="bottom" id="Xcp-fk-bdP"/>
+                                                <constraint firstAttribute="trailing" secondItem="NQN-GG-CD4" secondAttribute="trailing" id="wkp-Ua-v3E"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Pnm-ZH-fGW" id="b6Y-qP-LSP"/>
+                            <outlet property="delegate" destination="Pnm-ZH-fGW" id="3sB-T4-1BY"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ycs-kL-ycV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1239" y="-32"/>
         </scene>
         <!--Vehicle Navigation Controller-->
         <scene sceneID="rZP-ky-pEc">
@@ -362,7 +480,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="264"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="gXm-YU-G2I" userLabel="Vehicle Stack View">
-                                        <rect key="frame" x="25" y="15" width="270" height="234.5"/>
+                                        <rect key="frame" x="25.5" y="15" width="270" height="234.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vw-2s-NUE">
                                                 <rect key="frame" x="35" y="0.0" width="200" height="29"/>
@@ -586,7 +704,7 @@
                                 <rect key="frame" x="0.0" y="508" width="320" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GPI-lw-sJw" userLabel="Compare Stack View">
-                                        <rect key="frame" x="45.5" y="5.5" width="230.5" height="49"/>
+                                        <rect key="frame" x="45" y="5.5" width="230.5" height="49"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jel-zC-tfF">
                                                 <rect key="frame" x="0.0" y="0.0" width="67.5" height="49"/>
@@ -645,15 +763,13 @@
                             <constraint firstItem="th3-Ih-p19" firstAttribute="top" secondItem="bY0-7A-qS7" secondAttribute="bottom" id="ydE-uh-Q2z"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="OFW-IG-1Hr"/>
+                    <navigationItem key="navigationItem" title="Vehicles" id="OFW-IG-1Hr"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="largestVehicle" destination="z0n-ba-dYh" id="TPM-KT-oeT"/>
-                        <outlet property="maxVehicleCrewNumber" destination="kTW-x7-Ojz" id="RWo-fn-ghc"/>
                         <outlet property="smallestVehicle" destination="X3f-3s-tvT" id="xNJ-pp-My4"/>
                         <outlet property="vehicleClass" destination="JEV-FC-G7v" id="201-xZ-vgv"/>
                         <outlet property="vehicleCost" destination="sSo-3C-5hb" id="IER-GH-VSh"/>
-                        <outlet property="vehicleFullName" destination="4vw-2s-NUE" id="4vs-zH-B2H"/>
                         <outlet property="vehicleLength" destination="zKA-3y-2WA" id="7hy-aB-suu"/>
                         <outlet property="vehicleMake" destination="YPr-lX-150" id="USH-ml-kr2"/>
                         <outlet property="vehicleMaxCrewNumber" destination="kTW-x7-Ojz" id="FSK-lk-PUR"/>
@@ -664,163 +780,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8hM-1x-izi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="495" y="-30"/>
-        </scene>
-        <!--Home Screen Table Cell View Controller-->
-        <scene sceneID="R7d-fs-UMk">
-            <objects>
-                <viewController id="TSR-TD-JPk" userLabel="Home Screen Table Cell View Controller" customClass="HomeScreenTableViewController" customModule="SingleViewAppSwiftTemplate" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="zxF-od-VrK"/>
-                        <viewControllerLayoutGuide type="bottom" id="hf2-H4-Lz5"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pDW-nx-zLs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="OAC-ba-WbE">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <subviews>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="charcterCell" translatesAutoresizingMaskIntoConstraints="NO" id="enV-tb-Xqt">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="189.5"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="enV-tb-Xqt" id="f4l-S6-30r">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="189"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="4Jf-9g-0q5">
-                                                    <rect key="frame" x="0.0" y="25.5" width="320" height="139"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvS-7e-x6k" userLabel="Character Icon Button">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
-                                                            <color key="tintColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal" image="icon-characters"/>
-                                                            <connections>
-                                                                <action selector="charactersIconButton:" destination="TSR-TD-JPk" eventType="touchUpInside" id="kWd-wV-4Ts"/>
-                                                            </connections>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHO-Lt-f1h">
-                                                            <rect key="frame" x="0.0" y="106" width="320" height="33"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                            <color key="tintColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal" title="Characters"/>
-                                                            <connections>
-                                                                <action selector="charactersButton:" destination="TSR-TD-JPk" eventType="touchUpInside" id="Wep-aF-AA7"/>
-                                                            </connections>
-                                                        </button>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="4Jf-9g-0q5" firstAttribute="centerY" secondItem="f4l-S6-30r" secondAttribute="centerY" id="GPg-QE-d0H"/>
-                                                <constraint firstItem="dvS-7e-x6k" firstAttribute="leading" secondItem="f4l-S6-30r" secondAttribute="leading" id="PPY-w9-wYm"/>
-                                                <constraint firstItem="4Jf-9g-0q5" firstAttribute="centerX" secondItem="f4l-S6-30r" secondAttribute="centerX" id="bi0-46-wkI"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="vehicleCell" translatesAutoresizingMaskIntoConstraints="NO" id="C5Q-wQ-PgK">
-                                        <rect key="frame" x="0.0" y="189.5" width="320" height="189"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C5Q-wQ-PgK" id="wpP-qH-han">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="188.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="cx4-CR-mFx">
-                                                    <rect key="frame" x="0.0" y="25" width="320" height="139"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2bE-1b-nKR" userLabel="Vehicle Icon Button">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
-                                                            <state key="normal" image="icon-vehicles"/>
-                                                            <connections>
-                                                                <action selector="vehiclesIconButton:" destination="TSR-TD-JPk" eventType="touchUpInside" id="eI2-tl-1tM"/>
-                                                            </connections>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNf-RD-6q4" userLabel="Vehicles">
-                                                            <rect key="frame" x="0.0" y="106" width="320" height="33"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                            <color key="tintColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal" title="Vehicles"/>
-                                                            <connections>
-                                                                <action selector="vehiclesButton:" destination="TSR-TD-JPk" eventType="touchUpInside" id="bQ3-Ft-2QK"/>
-                                                            </connections>
-                                                        </button>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="2bE-1b-nKR" firstAttribute="leading" secondItem="wpP-qH-han" secondAttribute="leading" id="5Lg-se-VWn"/>
-                                                <constraint firstItem="cx4-CR-mFx" firstAttribute="centerY" secondItem="wpP-qH-han" secondAttribute="centerY" id="ljc-2d-RRL"/>
-                                                <constraint firstItem="cx4-CR-mFx" firstAttribute="centerX" secondItem="wpP-qH-han" secondAttribute="centerX" id="q0E-uD-TV1"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="starshipCell" rowHeight="170" translatesAutoresizingMaskIntoConstraints="NO" id="xMJ-WH-zpL">
-                                        <rect key="frame" x="0.0" y="378.5" width="320" height="189.5"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xMJ-WH-zpL" id="0jQ-ci-1RV">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="189"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="BPO-Ln-lVd">
-                                                    <rect key="frame" x="0.0" y="25.5" width="320" height="139"/>
-                                                    <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iPc-lg-jhe" userLabel="Starship Icon Button">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
-                                                            <state key="normal" image="icon-starships"/>
-                                                            <connections>
-                                                                <action selector="starshipIconButton:" destination="TSR-TD-JPk" eventType="touchUpInside" id="uyA-RM-TFh"/>
-                                                            </connections>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yuy-cJ-iLl">
-                                                            <rect key="frame" x="0.0" y="106" width="320" height="33"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                            <color key="tintColor" red="0.50784188509999995" green="0.84911912680000001" blue="0.99967902900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <state key="normal" title="Starships"/>
-                                                            <connections>
-                                                                <action selector="starshipTextButton:" destination="TSR-TD-JPk" eventType="touchUpInside" id="3LC-4M-e6E"/>
-                                                            </connections>
-                                                        </button>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="BPO-Ln-lVd" firstAttribute="centerX" secondItem="0jQ-ci-1RV" secondAttribute="centerX" id="hCa-mR-RPK"/>
-                                                <constraint firstItem="iPc-lg-jhe" firstAttribute="leading" secondItem="0jQ-ci-1RV" secondAttribute="leading" id="oV8-4i-MGi"/>
-                                                <constraint firstItem="BPO-Ln-lVd" firstAttribute="centerY" secondItem="0jQ-ci-1RV" secondAttribute="centerY" id="xZe-2Q-Qhb"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="OAC-ba-WbE" secondAttribute="bottom" id="QZ8-Zm-tdw"/>
-                            <constraint firstItem="OAC-ba-WbE" firstAttribute="centerY" secondItem="pDW-nx-zLs" secondAttribute="centerY" id="SIK-Ey-fRJ"/>
-                            <constraint firstItem="OAC-ba-WbE" firstAttribute="top" secondItem="pDW-nx-zLs" secondAttribute="top" id="YOi-8W-dFx"/>
-                            <constraint firstItem="OAC-ba-WbE" firstAttribute="centerX" secondItem="pDW-nx-zLs" secondAttribute="centerX" id="afi-0N-Sh8"/>
-                            <constraint firstAttribute="trailing" secondItem="OAC-ba-WbE" secondAttribute="trailing" id="gec-J5-1br"/>
-                            <constraint firstItem="OAC-ba-WbE" firstAttribute="leading" secondItem="pDW-nx-zLs" secondAttribute="leading" id="u4O-4K-sJ5"/>
-                        </constraints>
-                    </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <connections>
-                        <outlet property="characterButtonCell" destination="enV-tb-Xqt" id="eCb-ku-KDH"/>
-                        <outlet property="starshipButtonCell" destination="xMJ-WH-zpL" id="IsD-Kn-XoH"/>
-                        <outlet property="vehicleButtonCell" destination="C5Q-wQ-PgK" id="ArH-jP-ycd"/>
-                        <segue destination="SLH-6S-Kpb" kind="show" id="83d-e2-Y8E"/>
-                        <segue destination="Bnu-Ew-XuU" kind="show" id="mpZ-ML-yql"/>
-                        <segue destination="GYs-CC-THd" kind="show" id="nkH-CD-yqG"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4hc-JW-hRS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1260" y="-32"/>
         </scene>
         <!--Starship Navigation Controller-->
         <scene sceneID="EVS-d5-RyE">
@@ -860,7 +819,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="264"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="Ng7-OF-M3g" userLabel="Starship Stack View">
-                                        <rect key="frame" x="25" y="15" width="270" height="234.5"/>
+                                        <rect key="frame" x="25.5" y="15" width="270" height="234.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starship Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knj-ZB-07I">
                                                 <rect key="frame" x="30" y="0.0" width="210.5" height="29"/>
@@ -1081,7 +1040,7 @@
                                 <rect key="frame" x="0.0" y="508" width="320" height="60"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="orB-eF-Z0w" userLabel="Compare Stack View">
-                                        <rect key="frame" x="77.5" y="5.5" width="165" height="49"/>
+                                        <rect key="frame" x="78" y="5.5" width="165" height="49"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="43l-pI-Rfo">
                                                 <rect key="frame" x="0.0" y="0.0" width="67.5" height="49"/>
@@ -1140,7 +1099,7 @@
                             <constraint firstItem="WR3-nA-mAU" firstAttribute="leading" secondItem="oKq-f2-DnB" secondAttribute="leading" id="vqO-w5-duA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="MRP-P6-c52"/>
+                    <navigationItem key="navigationItem" title="Starships" id="MRP-P6-c52"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="largestStarship" destination="gl0-23-qBW" id="pA7-7R-xRZ"/>

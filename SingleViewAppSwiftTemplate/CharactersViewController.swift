@@ -14,6 +14,8 @@ class CharactersViewController: UIViewController, UIPickerViewDelegate, UIPicker
 
     
     @IBOutlet weak var charactersPickerView: UIPickerView!
+    var pickerData: [String] = [String]()
+    
     @IBOutlet weak var largestCharacterDisplay: UILabel!
     @IBOutlet weak var smallestCharacterDisplay: UILabel!
     @IBOutlet weak var hair: UILabel!
@@ -23,7 +25,7 @@ class CharactersViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var yearBorn: UILabel!
     @IBOutlet weak var characterName: UILabel!
     
-    var pickerData: [String] = [String]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,8 @@ class CharactersViewController: UIViewController, UIPickerViewDelegate, UIPicker
         // Do any additional setup after loading the view.
         
         let currentCharacter = Character(id: 1, name: "Luke Skywalker", birth_year: "19BBY", homeworld: "Tatooine", height: "172", eyes: "blue", hair: "blonde")
+        
+        
         do {
             let currentCharacterModel = try CharacterViewModel(model: currentCharacter)
             displayCharacterInfo(using: currentCharacterModel)

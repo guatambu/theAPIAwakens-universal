@@ -6,11 +6,15 @@
 //  Copyright © 2017 Treehouse. All rights reserved.
 //
 
+// need to create implementation for the smallest and largest data properties and stub subsequent data
+
 import UIKit
 
 class StarshipsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var starshipsPickerView: UIPickerView!
+    var pickerData: [String] = [String]()
+    
     @IBOutlet weak var largestStarship: UILabel!
     @IBOutlet weak var smallestStarship: UILabel!
     @IBOutlet weak var starshipMaxCrewNumber: UILabel!
@@ -20,7 +24,7 @@ class StarshipsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var starshipMake: UILabel!
     @IBOutlet weak var starshipName: UILabel!
     
-    var pickerData: [String] = [String]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +32,15 @@ class StarshipsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         // Do any additional setup after loading the view.
         
         let currentStarship = Starship(id: 1, name: "Millenium Falcon", make: "Corellian Engineering Corporation", cost_in_credits: "100000", length: "34.37", starship_class: "Light freighter", crew: "4")
-        let currentStarshipModel = StarshipViewModel(model: currentStarship)
-        
-        displayStartshipInfo(using: currentStarshipModel)
+        do {
+            let currentStarshipModel = try StarshipViewModel(model: currentStarship)
+            displayStartshipInfo(using: currentStarshipModel)
+        } catch Errors_API_Awakens.stringNotInteger {
+            print("invalid entry on 'length' property")
+        } catch {
+            print("error in API pachkaged JSON")
+        }
+    
         
         self.starshipsPickerView.delegate = self
         self.starshipsPickerView.dataSource = self

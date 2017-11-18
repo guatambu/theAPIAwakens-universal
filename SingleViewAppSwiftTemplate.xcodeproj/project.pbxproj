@@ -16,11 +16,11 @@
 		FA4D87A11FB6470A0068336F /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D87A01FB6470A0068336F /* CharacterViewModel.swift */; };
 		FA4D87A51FB64B880068336F /* StarshipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D87A41FB64B880068336F /* StarshipViewModel.swift */; };
 		FA4D87A71FB64E160068336F /* VehicleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D87A61FB64E160068336F /* VehicleViewModel.swift */; };
-		FA4D87B01FBA3EAB0068336F /* HomeScreenTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D87AF1FBA3EAB0068336F /* HomeScreenTableViewController.swift */; };
 		FA4D87B21FBA3EE00068336F /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D87B11FBA3EE00068336F /* CharactersViewController.swift */; };
 		FA4D87B41FBA3EF10068336F /* StarshipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D87B31FBA3EF10068336F /* StarshipsViewController.swift */; };
 		FA4D87B61FBA3F030068336F /* VehiclesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D87B51FBA3F030068336F /* VehiclesViewController.swift */; };
 		FA4D87B81FBB9CE80068336F /* Errors_API_Awakens.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D87B71FBB9CE80068336F /* Errors_API_Awakens.swift */; };
+		FA4D87BC1FBF8DB40068336F /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D87BB1FBF8DB40068336F /* HomeScreenViewController.swift */; };
 		FA5FCEC61F6872C3000757F4 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCEC51F6872C3000757F4 /* Character.swift */; };
 		FA5FCECA1F6878DB000757F4 /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCEC91F6878DB000757F4 /* Starship.swift */; };
 		FA5FCECC1F6879CD000757F4 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCECB1F6879CD000757F4 /* Vehicle.swift */; };
@@ -59,11 +59,11 @@
 		FA4D87A01FB6470A0068336F /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		FA4D87A41FB64B880068336F /* StarshipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipViewModel.swift; sourceTree = "<group>"; };
 		FA4D87A61FB64E160068336F /* VehicleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleViewModel.swift; sourceTree = "<group>"; };
-		FA4D87AF1FBA3EAB0068336F /* HomeScreenTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenTableViewController.swift; sourceTree = "<group>"; };
 		FA4D87B11FBA3EE00068336F /* CharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewController.swift; sourceTree = "<group>"; };
 		FA4D87B31FBA3EF10068336F /* StarshipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipsViewController.swift; sourceTree = "<group>"; };
 		FA4D87B51FBA3F030068336F /* VehiclesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehiclesViewController.swift; sourceTree = "<group>"; };
 		FA4D87B71FBB9CE80068336F /* Errors_API_Awakens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors_API_Awakens.swift; sourceTree = "<group>"; };
+		FA4D87BB1FBF8DB40068336F /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		FA5FCEC51F6872C3000757F4 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		FA5FCEC91F6878DB000757F4 /* Starship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
 		FA5FCECB1F6879CD000757F4 /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 		FA5FCECD1F687C33000757F4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA4D87AF1FBA3EAB0068336F /* HomeScreenTableViewController.swift */,
+				FA4D87BB1FBF8DB40068336F /* HomeScreenViewController.swift */,
 				FA4D87B11FBA3EE00068336F /* CharactersViewController.swift */,
 				FA4D87B31FBA3EF10068336F /* StarshipsViewController.swift */,
 				FA4D87B51FBA3F030068336F /* VehiclesViewController.swift */,
@@ -316,9 +316,9 @@
 				FA4D87B41FBA3EF10068336F /* StarshipsViewController.swift in Sources */,
 				FA4D87A51FB64B880068336F /* StarshipViewModel.swift in Sources */,
 				FA5FCEC61F6872C3000757F4 /* Character.swift in Sources */,
-				FA4D87B01FBA3EAB0068336F /* HomeScreenTableViewController.swift in Sources */,
 				3A8AADC91DF9B85E00A2B931 /* AppDelegate.swift in Sources */,
 				FA4D87B61FBA3F030068336F /* VehiclesViewController.swift in Sources */,
+				FA4D87BC1FBF8DB40068336F /* HomeScreenViewController.swift in Sources */,
 				FA4D87B81FBB9CE80068336F /* Errors_API_Awakens.swift in Sources */,
 				FA5FCECC1F6879CD000757F4 /* Vehicle.swift in Sources */,
 				FA4D87A71FB64E160068336F /* VehicleViewModel.swift in Sources */,
