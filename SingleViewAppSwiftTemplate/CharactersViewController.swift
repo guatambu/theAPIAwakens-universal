@@ -29,6 +29,8 @@ class CharactersViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationItem.backBarButtonItem?.title = " "
 
         // Do any additional setup after loading the view.
         
