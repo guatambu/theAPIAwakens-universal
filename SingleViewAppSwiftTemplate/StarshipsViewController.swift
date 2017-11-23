@@ -13,7 +13,7 @@ import UIKit
 class StarshipsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var starshipsPickerView: UIPickerView!
-    var pickerData: [String] = [String]()
+    var pickerDataSource: [String] = [String]()
     
     @IBOutlet weak var largestStarship: UILabel!
     @IBOutlet weak var smallestStarship: UILabel!
@@ -31,6 +31,7 @@ class StarshipsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 
         // Do any additional setup after loading the view.
         
+        /*
         let currentStarship = Starship(id: 1, name: "Millenium Falcon", make: "Corellian Engineering Corporation", cost_in_credits: "100000", length: "34.37", starship_class: "Light freighter", crew: "4")
         do {
             let currentStarshipModel = try StarshipViewModel(model: currentStarship)
@@ -40,11 +41,11 @@ class StarshipsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         } catch {
             print("error in API pachkaged JSON")
         }
-    
+        */
         
         self.starshipsPickerView.delegate = self
         self.starshipsPickerView.dataSource = self
-        pickerData = ["Millenium Falcon", "Coronet", "Imperial Light Cruiser", "Imperial Star Destroyer", "Naboo Royal Starship", "Nebulon-B Frigate", "Republic Attack Cruiser", "Death Star", "Mon Calamari Starship"]
+        pickerDataSource = ["Millenium Falcon", "Coronet", "Imperial Light Cruiser", "Imperial Star Destroyer", "Naboo Royal Starship", "Nebulon-B Frigate", "Republic Attack Cruiser", "Death Star", "Mon Calamari Starship"]
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,18 +61,33 @@ class StarshipsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     // The number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        return pickerDataSource.count
     }
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
+        return pickerDataSource[row]
     }
     
     // Catpure the picker view selection
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
+        var currentStarship = Starship(id: 1, name: "Millenium Falcon", make: "Corellian Engineering Corporation", cost_in_credits: "100000", length: "34.37", starship_class: "Light freighter", crew: "4")
+        
+        if pickerDataSource[row] ==  currentStarship.name {
+            do {
+                var currentStarshipModel = try StarshipViewModel(model: currentStarship)
+                displayStartshipInfo(using: currentStarshipModel)
+                print(pickerDataSource[row])
+            } catch Errors_API_Awakens.stringNotInteger {
+                print("invalid entry on 'length' property")
+            } catch {
+                print("error in API packaged JSON")
+            }
+        } else {
+            print(pickerDataSource[row])
+        }
     }
     
 

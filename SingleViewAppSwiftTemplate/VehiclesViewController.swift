@@ -14,7 +14,7 @@ import UIKit
 class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var vehiclesPickerView: UIPickerView!
-    var pickerData: [String] = [String]()
+    var pickerDataSource: [String] = [String]()
     
     @IBOutlet weak var largestVehicle: UILabel!
     @IBOutlet weak var smallestVehicle: UILabel!
@@ -32,7 +32,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        /*
         let currentVehicle = Vehicle(id: 1, name: "X-34 landspeeder", make: "SoroSuub Corporation", cost_in_credits: "10550", length: "3.4", vehicle_class: "repulsorcraft", crew: "1")
         do {
             let currentVehicleModel = try VehicleViewModel(model: currentVehicle)
@@ -42,11 +42,12 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         } catch {
             print("error in API pachkaged JSON")
         }
+        */
         
         self.vehiclesPickerView.delegate = self
         self.vehiclesPickerView.dataSource = self
-        pickerData = ["AT-AT Walker", "H-Type Nubian Yacht", "Jumspeeder", "Podracer", "Snow Speeder", "Sith Speeder", "Speeder Bike", "X-34 Landspeedr", ]
-        
+        pickerDataSource = ["AT-AT Walker", "H-Type Nubian Yacht", "Jumspeeder", "Podracer", "Snow Speeder", "Sith Speeder", "Speeder Bike", "X-34 Landspeeder", ]
+ 
         
         
     }
@@ -63,18 +64,33 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     // The number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        return pickerDataSource.count
     }
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
+        return pickerDataSource[row]
     }
     
     // Catpure the picker view selection
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
+        var currentVehicle = Vehicle(id: 1, name: "X-34 Landspeeder", make: "SoroSuub Corporation", cost_in_credits: "10550", length: "3.4", vehicle_class: "repulsorcraft", crew: "1")
+        
+        if pickerDataSource[row] ==  currentVehicle.name {
+            do {
+                var currentVehicleModel = try VehicleViewModel(model: currentVehicle)
+                displayVehicleInformation(using: currentVehicleModel)
+                print(pickerDataSource[row])
+            } catch Errors_API_Awakens.stringNotInteger {
+                print("invalid entry on 'length' property")
+            } catch {
+                print("error in API packaged JSON")
+            }
+        } else {
+            print(pickerDataSource[row])
+        }
     }
     
     

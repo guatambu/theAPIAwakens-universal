@@ -14,7 +14,12 @@ class CharactersViewController: UIViewController, UIPickerViewDelegate, UIPicker
 
     
     @IBOutlet weak var charactersPickerView: UIPickerView!
-    var pickerData: [String] = [String]()
+    var pickerDataSource: [String] = [String]()
+    
+    /*
+    var currentCharacter: Character = Character(id: 1, name: "Luke Skywalker", birth_year: "19BBY", homeworld: "Tatooine", height: "172", eyes: "blue", hair: "blonde")
+    var currentCharacterModel: CharacterViewModel = currentCharacter
+    */
     
     @IBOutlet weak var largestCharacterDisplay: UILabel!
     @IBOutlet weak var smallestCharacterDisplay: UILabel!
@@ -33,12 +38,12 @@ class CharactersViewController: UIViewController, UIPickerViewDelegate, UIPicker
         self.navigationController?.navigationItem.backBarButtonItem?.title = " "
 
         // Do any additional setup after loading the view.
+         /*
+        var currentCharacter = Character(id: 1, name: "Luke Skywalker", birth_year: "19BBY", homeworld: "Tatooine", height: "172", eyes: "blue", hair: "blonde")
         
-        let currentCharacter = Character(id: 1, name: "Luke Skywalker", birth_year: "19BBY", homeworld: "Tatooine", height: "172", eyes: "blue", hair: "blonde")
-        
-        
+       
         do {
-            let currentCharacterModel = try CharacterViewModel(model: currentCharacter)
+            currentCharacterModel = try CharacterViewModel(model: currentCharacter)
             displayCharacterInfo(using: currentCharacterModel)
             
         } catch Errors_API_Awakens.stringNotInteger {
@@ -46,11 +51,12 @@ class CharactersViewController: UIViewController, UIPickerViewDelegate, UIPicker
         } catch {
             print("error in API pachkaged JSON")
         }
+        */
         
         
         self.charactersPickerView.delegate = self
         self.charactersPickerView.dataSource = self
-        pickerData = ["Luke Skywalker", "Chewbacca", "Darth Vader", "Han Solo", "Princess Leia", "Lando Kalrisian", "C-3PO", "R2-D2", "Darth Maul"]
+        pickerDataSource = ["Luke Skywalker", "Chewbacca", "Darth Vader", "Han Solo", "Princess Leia", "Lando Kalrisian", "C-3PO", "R2-D2", "Darth Maul"]
 
     }
 
@@ -67,18 +73,34 @@ class CharactersViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     // The number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        return pickerDataSource.count
     }
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
+        return pickerDataSource[row]
     }
     
     // Catpure the picker view selection
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // This method is triggered whenever the user makes a change to the picker selection.
-        // The parameter named row and component represents what was selected.
+        // The parameter named row and component represents what was selected.''
+        
+        var currentCharacter = Character(id: 1, name: "Luke Skywalker", birth_year: "19BBY", homeworld: "Tatooine", height: "172", eyes: "blue", hair: "blonde")
+        
+        if pickerDataSource[row] ==  currentCharacter.name {
+            do {
+                var currentCharacterModel = try CharacterViewModel(model: currentCharacter)
+                displayCharacterInfo(using: currentCharacterModel)
+                print(pickerDataSource[row])
+            } catch Errors_API_Awakens.stringNotInteger {
+                print("invalid entry on 'height' property")
+            } catch {
+                print("error in API packaged JSON")
+            }
+        } else {
+            print(pickerDataSource[row])
+        }
     }
     
     
