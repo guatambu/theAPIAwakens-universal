@@ -2,8 +2,9 @@
 
 import UIKit
 
-let str = "Hello, playground"
 
-let num = "90"
+let num = "90.1"
 
-let myInt = Double(num)
+let myDouble = Float(num)
+
+

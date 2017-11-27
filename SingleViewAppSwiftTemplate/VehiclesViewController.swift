@@ -14,18 +14,6 @@ import UIKit
 class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var vehiclesPickerView: UIPickerView!
-    
-    // stub data vehicles
-    
-    let atAtWalker = Vehicle(id: 1, name: "AT-AT Walker", make: "Kuat Drive Yards, Imperial Department of Military Research", cost_in_credits: "unknown", length: "20", vehicle_class: "assault walker", crew: "5")
-    let atST = Vehicle(id: 2, name: "AT-ST", make: "Kuat Drive Yards, Imperial Department of Military Research", cost_in_credits: "unknown", length: "2", vehicle_class: "walker", crew: "2")
-    let sailBarge = Vehicle(id: 3, name: "Sail barge", make: "Ubrikkian Industries Custom Vehicle Division", cost_in_credits: "285000", length: "30", vehicle_class: "sail barge", crew: "26")
-    let sandCrawler = Vehicle(id: 4, name: "Sand Crawler", make: "Corellia Mining Corporation", cost_in_credits: "150000", length: "36.8", vehicle_class: "wheeled", crew: "46")
-    let stormIVTwinPodCloudCar = Vehicle(id: 5, name: "Storm IV Twin-Pod cloud car", make: "Bespin Motors", cost_in_credits: "75000", length: "7", vehicle_class: "repulsorcraft", crew: "2")
-    let t16Skyhopper = Vehicle(id: 6, name: "T-16 skyhopper", make: "Incom Corporation", cost_in_credits: "14500", length: "10.4", vehicle_class: "repulsorcraft", crew: "1")
-    let tIEBomber = Vehicle(id: 7, name: "TIE bomber", make: "Sienar Fleet Systems", cost_in_credits: "unknown", length: "7.8", vehicle_class: "space/planetary bomber", crew: "1")
-    let x34Landspeeder = Vehicle(id: 8, name: "X-34 Landspeeder", make: "SoroSuub Corporation", cost_in_credits: "10550", length: "3.4", vehicle_class: "repulsorcraft", crew: "1")
-    
     // stub vehicles data array
     var currentVehicleArray: [Vehicle] = []
     
@@ -94,20 +82,23 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         currentVehicleArray = [atST, atAtWalker, sailBarge, sandCrawler, stormIVTwinPodCloudCar, t16Skyhopper, tIEBomber, x34Landspeeder]
         
-        var currentVehicle = Vehicle(id: 1, name: "X-34 Landspeeder", make: "SoroSuub Corporation", cost_in_credits: "10550", length: "3.4", vehicle_class: "repulsorcraft", crew: "1")
+        // var currentVehicle = Vehicle(id: 1, name: "X-34 Landspeeder", make: "SoroSuub Corporation", cost_in_credits: "10550", length: "3.4", vehicle_class: "repulsorcraft", crew: "1")
         
-        if pickerDataSource[row] ==  currentVehicle.name {
-            do {
-                var currentVehicleModel = try VehicleViewModel(model: currentVehicle)
-                displayVehicleInformation(using: currentVehicleModel)
+        for currentVehicle in currentVehicleArray {
+            if pickerDataSource[row] ==  currentVehicle.name {
+                do {
+                    var currentVehicleModel = try VehicleViewModel(model: currentVehicle)
+                    displayVehicleInformation(using: currentVehicleModel)
+                    print(pickerDataSource[row])
+                } catch Errors_API_Awakens.stringNotInteger {
+                    print("ERROR: Object initialization failed: invalid entry on 'length' or 'cost_in_credits' property")
+                } catch {
+                    print("error in API packaged JSON")
+                }
+            } else {
                 print(pickerDataSource[row])
-            } catch Errors_API_Awakens.stringNotInteger {
-                print("invalid entry on 'length' property")
-            } catch {
-                print("error in API packaged JSON")
+                print(currentVehicle.name)
             }
-        } else {
-            print(pickerDataSource[row])
         }
     }
     
