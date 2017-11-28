@@ -16,11 +16,6 @@ class CharactersViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var charactersPickerView: UIPickerView!
     var pickerDataSource: [String] = [String]()
     
-    /*
-    var currentCharacter: Character = Character(id: 1, name: "Luke Skywalker", birth_year: "19BBY", homeworld: "Tatooine", height: "172", eyes: "blue", hair: "blonde")
-    var currentCharacterModel: CharacterViewModel = currentCharacter
-    */
-    
     @IBOutlet weak var largestCharacterDisplay: UILabel!
     @IBOutlet weak var smallestCharacterDisplay: UILabel!
     @IBOutlet weak var hair: UILabel!
@@ -29,7 +24,30 @@ class CharactersViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var homePlanet: UILabel!
     @IBOutlet weak var yearBorn: UILabel!
     @IBOutlet weak var characterName: UILabel!
+
+    // metric/british units conversion tool
+    let metricBritishConversion = MetricBritishConversion()
     
+    @IBOutlet weak var englishConversionButton: UIButton!
+    @IBOutlet weak var metricConversionButton: UIButton!
+    
+    @IBAction func convertToEnglishUnits(_ sender: Any) {
+        let heightText: String? = height.text
+        guard let heightValue = heightText, let height_Double = Double(heightValue.doublesOnly) else {
+            print("error in meters text")
+            return
+        }
+        height.text = "\(metricBritishConversion.metersToYards(height_Double)) yards"
+    }
+    
+    @IBAction func convertToMetricUnits(_ sender: Any) {
+        let heightText: String? = height.text
+        guard let heightValue = heightText, let height_Double = Double(heightValue.doublesOnly) else {
+            print("error in yards text")
+            return
+        }
+        height.text = "\(metricBritishConversion.yardsToMeters(height_Double))m"
+    }
     
     
     override func viewDidLoad() {

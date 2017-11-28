@@ -24,6 +24,29 @@ class StarshipsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var starshipMake: UILabel!
     @IBOutlet weak var starshipName: UILabel!
     
+    // metric/british units conversion tool
+    let metricBritishConversion = MetricBritishConversion()
+    
+    @IBOutlet weak var metricUnitsConversionButton: UIButton!
+    @IBOutlet weak var englishUnitsConversionButton: UIButton!
+    
+    @IBAction func convertToEnglishUnits(_ sender: Any) {
+        let starshipLengthText: String? = starshipLength.text
+        guard let starshipLengthValue = starshipLengthText, let starshipLength_Double = Double(starshipLengthValue.doublesOnly) else {
+            print("error in meters text")
+            return
+        }
+        starshipLength.text = "\(metricBritishConversion.metersToYards(starshipLength_Double)) yards"
+    }
+    
+    @IBAction func convertToMetricUnits(_ sender: Any) {
+        let starshipLengthText: String? = starshipLength.text
+        guard let starshipLengthValue = starshipLengthText, let starshipLength_Double = Double(starshipLengthValue.doublesOnly) else {
+            print("error in yards text")
+            return
+        }
+        starshipLength.text = "\(metricBritishConversion.yardsToMeters(starshipLength_Double))m"
+    }
     
     
     override func viewDidLoad() {

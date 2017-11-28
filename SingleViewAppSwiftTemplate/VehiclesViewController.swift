@@ -20,9 +20,6 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     var pickerDataSource: [String] = [String]()
     
-    // metric/british units conversion tool
-    let metricBritishConversion = MetricBritishConversion()
-    
     @IBOutlet weak var largestVehicle: UILabel!
     @IBOutlet weak var smallestVehicle: UILabel!
     @IBOutlet weak var vehicleMaxCrewNumber: UILabel!
@@ -32,6 +29,9 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var vehicleMake: UILabel!
     @IBOutlet weak var vehicleName: UILabel!
 
+    // metric/british units conversion tool
+    let metricBritishConversion = MetricBritishConversion()
+    
     @IBOutlet weak var metricConversionButton: UIButton!
     @IBOutlet weak var englishConversionButton: UIButton!
     
@@ -50,7 +50,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             print("error in meters text")
             return
         }
-        vehicleLength.text = "\(metricBritishConversion.metersToYards(vehicleLength_Double))yards"
+        vehicleLength.text = "\(metricBritishConversion.metersToYards(vehicleLength_Double)) yards"
     }
     
     

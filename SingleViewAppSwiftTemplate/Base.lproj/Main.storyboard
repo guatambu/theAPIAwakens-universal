@@ -135,6 +135,9 @@
                                                                         <state key="normal" title="English">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="convertToEnglishUnits:" destination="jDQ-Pf-aYN" eventType="touchUpInside" id="Hup-ug-83g"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nlx-1z-Yts">
                                                                         <rect key="frame" x="53" y="0.0" width="42" height="29"/>
@@ -143,6 +146,9 @@
                                                                         <state key="normal" title="Metric">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="convertToMetricUnits:" destination="jDQ-Pf-aYN" eventType="touchUpInside" id="DzW-n7-Jj4"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
@@ -297,11 +303,13 @@
                     <connections>
                         <outlet property="characterName" destination="7l0-gz-aO3" id="LKu-1b-n62"/>
                         <outlet property="charactersPickerView" destination="WBH-Ip-SFv" id="eEN-r5-Wdk"/>
+                        <outlet property="englishConversionButton" destination="3Sg-Wo-t04" id="JtK-9Z-RY6"/>
                         <outlet property="eyes" destination="KVq-di-C4X" id="ynL-0g-UcM"/>
                         <outlet property="hair" destination="QC5-yk-mRC" id="huI-Fr-qzt"/>
                         <outlet property="height" destination="KoG-hy-aRI" id="0ac-hG-yiA"/>
                         <outlet property="homePlanet" destination="iQ6-LM-een" id="9UX-H7-KCx"/>
                         <outlet property="largestCharacterDisplay" destination="l1i-qu-fkB" id="i8Z-uo-uZG"/>
+                        <outlet property="metricConversionButton" destination="Nlx-1z-Yts" id="4OU-sM-oPN"/>
                         <outlet property="smallestCharacterDisplay" destination="FGW-06-c7r" id="vuv-yI-7Yl"/>
                         <outlet property="yearBorn" destination="Nh0-Gf-ma3" id="UuC-dT-yYf"/>
                     </connections>
@@ -908,6 +916,9 @@
                                                                         <state key="normal" title="English">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="convertToEnglishUnits:" destination="zAn-Yk-tJM" eventType="touchUpInside" id="Lsc-tr-Mbc"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvZ-Hx-n3L">
                                                                         <rect key="frame" x="53" y="0.0" width="42" height="29"/>
@@ -916,6 +927,9 @@
                                                                         <state key="normal" title="Metric">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="convertToMetricUnits:" destination="zAn-Yk-tJM" eventType="touchUpInside" id="uQf-0x-xjn"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
@@ -1068,7 +1082,9 @@
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="englishUnitsConversionButton" destination="w5L-H3-CQh" id="wvu-BE-6cL"/>
                         <outlet property="largestStarship" destination="gl0-23-qBW" id="pA7-7R-xRZ"/>
+                        <outlet property="metricUnitsConversionButton" destination="kvZ-Hx-n3L" id="gRC-TK-b2E"/>
                         <outlet property="smallestStarship" destination="UsX-1y-xbB" id="UKS-qK-wWW"/>
                         <outlet property="starshipClass" destination="s7U-U3-X7a" id="i97-cg-B7V"/>
                         <outlet property="starshipCost" destination="I77-9P-nat" id="xzC-6B-N48"/>
