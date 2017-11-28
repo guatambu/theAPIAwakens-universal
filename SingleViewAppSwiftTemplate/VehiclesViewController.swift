@@ -13,11 +13,15 @@ import UIKit
 
 class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    
     @IBOutlet weak var vehiclesPickerView: UIPickerView!
     // stub vehicles data array
     var currentVehicleArray: [Vehicle] = []
     
     var pickerDataSource: [String] = [String]()
+    
+    // metric/british units conversion tool
+    let metricBritishConversion = MetricBritishConversion()
     
     @IBOutlet weak var largestVehicle: UILabel!
     @IBOutlet weak var smallestVehicle: UILabel!
@@ -27,13 +31,31 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var vehicleCost: UILabel!
     @IBOutlet weak var vehicleMake: UILabel!
     @IBOutlet weak var vehicleName: UILabel!
+
+    @IBOutlet weak var metricConversionButton: UIButton!
+    @IBOutlet weak var englishConversionButton: UIButton!
     
-    
+    @IBAction func convertToMetricUnits(_ sender: Any) {
+        let vehicleLengthText: String? = vehicleLength.text
+        guard let vehicleLengthValue = vehicleLengthText, let vehicleLength_Double = Double(vehicleLengthValue.doublesOnly) else {
+            print("error in yards text")
+            return
+        }
+        vehicleLength.text = "\(metricBritishConversion.yardsToMeters(vehicleLength_Double))m"
+        
+    }
+    @IBAction func convertToEnglishUnits(_ sender: Any) {
+        let vehicleLengthText: String? = vehicleLength.text
+        guard let vehicleLengthValue = vehicleLengthText, let vehicleLength_Double = Double(vehicleLengthValue.doublesOnly) else {
+            print("error in meters text")
+            return
+        }
+        vehicleLength.text = "\(metricBritishConversion.metersToYards(vehicleLength_Double))yards"
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         /*
         let currentVehicle = Vehicle(id: 1, name: "X-34 landspeeder", make: "SoroSuub Corporation", cost_in_credits: "10550", length: "3.4", vehicle_class: "repulsorcraft", crew: "1")

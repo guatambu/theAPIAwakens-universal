@@ -579,6 +579,9 @@
                                                                         <state key="normal" title="English">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="convertToEnglishUnits:" destination="4ri-ph-OlZ" eventType="touchUpInside" id="7eY-qL-pZV"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrT-Yk-cFs">
                                                                         <rect key="frame" x="53" y="0.0" width="42" height="29"/>
@@ -587,6 +590,9 @@
                                                                         <state key="normal" title="Metric">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="convertToMetricUnits:" destination="4ri-ph-OlZ" eventType="touchUpInside" id="9JO-cO-4tZ"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
@@ -739,7 +745,9 @@
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="englishConversionButton" destination="l1r-XH-TyU" id="XP4-j0-hB6"/>
                         <outlet property="largestVehicle" destination="z0n-ba-dYh" id="TPM-KT-oeT"/>
+                        <outlet property="metricConversionButton" destination="jrT-Yk-cFs" id="Qme-jF-BHb"/>
                         <outlet property="smallestVehicle" destination="X3f-3s-tvT" id="xNJ-pp-My4"/>
                         <outlet property="vehicleClass" destination="JEV-FC-G7v" id="201-xZ-vgv"/>
                         <outlet property="vehicleCost" destination="sSo-3C-5hb" id="IER-GH-VSh"/>
