@@ -10,17 +10,13 @@ import Foundation
 
 class CreditsUSDollarsConversion {
     
-    var conversionRate: Double = 0
-    var amountInCredits: Double = 0
-    var amountInUSDollars: Double = 0
-    
-    func convertCreditsToUSDollars() {
-        return amountInUSDollars = amountInCredits * conversionRate
+    func convertCreditsToUSDollars(_ costInCredits: Double, _ rate: Double) -> Double {
+        let dollars = costInCredits * rate
+        return dollars
     }
     
-    func convertUSDollarsToCredits() {
-        return amountInCredits = amountInUSDollars / conversionRate
+    func convertUSDollarsToCredits(_ costInDollars: Double, _ rate: Double) -> Double {
+        let credits = costInDollars / rate
+        return credits
     }
-    
-    
 }

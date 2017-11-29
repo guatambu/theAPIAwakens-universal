@@ -7,7 +7,8 @@
 //
 
 
-// need to create implementation for the smallest and largest data properties and stub subsequent data
+// MARK: need to create implementation for the smallest and largest data properties and stub subsequent data
+// MARK: need to put a limit on the currency conversion BACK to credits as limited to one time then button is disabled
 
 import UIKit
 
@@ -63,11 +64,25 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var creditsConversionButton: UIButton!
     @IBOutlet weak var USDollarConversionButton: UIButton!
     
+    // MARK: need to set button to initially disabled, and then make it enabled after first conversion
     @IBAction func convertToCredits(_ sender: Any) {
         
+        let vehicleCostText: String? = vehicleCost.text
+        guard let vehicleCostValue = vehicleCostText, let vehicleCost_Double = Double(vehicleCostValue.doublesOnly) else {
+            print("error in user cost text")
+            return
+        }
+        
+        guard let userRateValue = userInputCurrencyExchangeRate, let userRate_Double = Double(userRateValue.doublesOnly) else {
+            print("error in user input text")
+            return
+        }
+        
+        vehicleCost.text = "\(creditsUSDollarsConversion.convertUSDollarsToCredits(vehicleCost_Double, userRate_Double))"
     }
     
     @IBAction func convertToUSDollar(_ sender: Any) {
+        // See Internal Function at bottom
         presentUserInputCurrencyExchangeRateAlert()
     }
     
@@ -75,18 +90,6 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     // ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        /*
-        let currentVehicle = Vehicle(id: 1, name: "X-34 landspeeder", make: "SoroSuub Corporation", cost_in_credits: "10550", length: "3.4", vehicle_class: "repulsorcraft", crew: "1")
-        do {
-            let currentVehicleModel = try VehicleViewModel(model: currentVehicle)
-            displayVehicleInformation(using: currentVehicleModel)
-        } catch Errors_API_Awakens.stringNotInteger {
-            print("invalid entry on 'length' property")
-        } catch {
-            print("error in API pachkaged JSON")
-        }
-        */
         
         self.vehiclesPickerView.delegate = self
         self.vehiclesPickerView.dataSource = self
@@ -144,6 +147,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     
+    // Internal Functions
     func displayVehicleInformation(using vehicleViewModel: VehicleViewModel) {
         vehicleName.text = vehicleViewModel.name
         vehicleMake.text = vehicleViewModel.make
@@ -160,10 +164,26 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
             if let field = alertController.textFields?[0] {
                 // store user input
-                self.userInputCurrencyExchangeRate = field.text
-            } else {
-                // user did not fill field
-                
+                if field.text != "" {
+                    
+                    self.userInputCurrencyExchangeRate = field.text
+                    guard let userRateValue = self.userInputCurrencyExchangeRate, let userRate_Double = Double(userRateValue.doublesOnly) else {
+                        print("error in user input text")
+                        return
+                    }
+                    
+                    let vehicleCostText: String? = self.vehicleCost.text
+                    guard let vehicleCostValue = vehicleCostText, let vehicleCost_Double = Double(vehicleCostValue.doublesOnly) else {
+                        print("error in user cost text")
+                        return
+                    }
+                    
+                    self.vehicleCost.text = "\(self.creditsUSDollarsConversion.convertCreditsToUSDollars(vehicleCost_Double, userRate_Double))"
+                    
+                } else {
+                    print("no user input")
+                    self.present(alertController, animated: true, completion: nil)
+                }
             }
         }
         
