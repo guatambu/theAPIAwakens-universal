@@ -26,6 +26,7 @@
 		FA5FCEC61F6872C3000757F4 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCEC51F6872C3000757F4 /* Character.swift */; };
 		FA5FCECA1F6878DB000757F4 /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCEC91F6878DB000757F4 /* Starship.swift */; };
 		FA5FCECC1F6879CD000757F4 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCECB1F6879CD000757F4 /* Vehicle.swift */; };
+		FAA923061FCF5DFC00BB1126 /* CreditsUSDollarsConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA923051FCF5DFC00BB1126 /* CreditsUSDollarsConversion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		FA5FCEC51F6872C3000757F4 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		FA5FCEC91F6878DB000757F4 /* Starship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
 		FA5FCECB1F6879CD000757F4 /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
+		FAA923051FCF5DFC00BB1126 /* CreditsUSDollarsConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsUSDollarsConversion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				FA4D879F1FB646DE0068336F /* View Models */,
 				3A8AADC81DF9B85E00A2B931 /* AppDelegate.swift */,
 				3A8AADCC1DF9B85E00A2B931 /* Main.storyboard */,
+				FAA923051FCF5DFC00BB1126 /* CreditsUSDollarsConversion.swift */,
 				FA3E66AF1FCDF0FC007C7BC0 /* MetricBritishConversion.swift */,
 				FA3E66B11FCE05A5007C7BC0 /* DoublesOnly.swift */,
 				FA4D87B71FBB9CE80068336F /* Errors_API_Awakens.swift */,
@@ -325,6 +328,7 @@
 				FA3E66B21FCE05A5007C7BC0 /* DoublesOnly.swift in Sources */,
 				3A8AADC91DF9B85E00A2B931 /* AppDelegate.swift in Sources */,
 				FA4D87B61FBA3F030068336F /* VehiclesViewController.swift in Sources */,
+				FAA923061FCF5DFC00BB1126 /* CreditsUSDollarsConversion.swift in Sources */,
 				FA4D87BC1FBF8DB40068336F /* HomeScreenViewController.swift in Sources */,
 				FA3E66B01FCDF0FC007C7BC0 /* MetricBritishConversion.swift in Sources */,
 				FA4D87B81FBB9CE80068336F /* Errors_API_Awakens.swift in Sources */,

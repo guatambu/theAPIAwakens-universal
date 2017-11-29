@@ -535,6 +535,9 @@
                                                                         <state key="normal" title="USD">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="convertToUSDollar:" destination="4ri-ph-OlZ" eventType="touchUpInside" id="JN1-n7-TD9"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MU9-gg-akf">
                                                                         <rect key="frame" x="36" y="0.0" width="47" height="29"/>
@@ -543,6 +546,9 @@
                                                                         <state key="normal" title="Credits">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="convertToCredits:" destination="4ri-ph-OlZ" eventType="touchUpInside" id="5PD-BX-9c6"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
@@ -753,6 +759,8 @@
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
+                        <outlet property="USDollarConversionButton" destination="7Rb-Yx-tm3" id="9wr-zE-sKr"/>
+                        <outlet property="creditsConversionButton" destination="MU9-gg-akf" id="4Sr-lD-KUH"/>
                         <outlet property="englishConversionButton" destination="l1r-XH-TyU" id="XP4-j0-hB6"/>
                         <outlet property="largestVehicle" destination="z0n-ba-dYh" id="TPM-KT-oeT"/>
                         <outlet property="metricConversionButton" destination="jrT-Yk-cFs" id="Qme-jF-BHb"/>

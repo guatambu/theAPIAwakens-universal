@@ -15,11 +15,14 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
     
     @IBOutlet weak var vehiclesPickerView: UIPickerView!
-    // stub vehicles data array
+    
+    // Stub Vehicles Data Array
     var currentVehicleArray: [Vehicle] = []
     
+    // UIPickerView
     var pickerDataSource: [String] = [String]()
     
+    // UI IBOutlets
     @IBOutlet weak var largestVehicle: UILabel!
     @IBOutlet weak var smallestVehicle: UILabel!
     @IBOutlet weak var vehicleMaxCrewNumber: UILabel!
@@ -29,7 +32,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var vehicleMake: UILabel!
     @IBOutlet weak var vehicleName: UILabel!
 
-    // metric/british units conversion tool
+    // Metric/British Units Conversion Tool
     let metricBritishConversion = MetricBritishConversion()
     
     @IBOutlet weak var metricConversionButton: UIButton!
@@ -53,7 +56,23 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         vehicleLength.text = "\(metricBritishConversion.metersToYards(vehicleLength_Double)) yards"
     }
     
+    // Currency Conversion Credits US Dollars
+    var userInputCurrencyExchangeRate: String? = ""
+    let creditsUSDollarsConversion = CreditsUSDollarsConversion()
     
+    @IBOutlet weak var creditsConversionButton: UIButton!
+    @IBOutlet weak var USDollarConversionButton: UIButton!
+    
+    @IBAction func convertToCredits(_ sender: Any) {
+        
+    }
+    
+    @IBAction func convertToUSDollar(_ sender: Any) {
+        presentUserInputCurrencyExchangeRateAlert()
+    }
+    
+    
+    // ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -133,6 +152,31 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         vehicleClass.text = vehicleViewModel.vehicle_class
         vehicleMaxCrewNumber.text = vehicleViewModel.crew
         
+    }
+    
+    func presentUserInputCurrencyExchangeRateAlert() {
+        let alertController = UIAlertController(title: "Exchange Rate", message: "Please enter the value of 1 Galactic Credit in U.S. Dollars($) :", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+            if let field = alertController.textFields?[0] {
+                // store user input
+                self.userInputCurrencyExchangeRate = field.text
+            } else {
+                // user did not fill field
+                
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Email"
+        }
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 
 }
