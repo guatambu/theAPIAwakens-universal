@@ -123,11 +123,11 @@
 		3A8AADC71DF9B85E00A2B931 /* SingleViewAppSwiftTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				3A8AADC81DF9B85E00A2B931 /* AppDelegate.swift */,
+				3A8AADCC1DF9B85E00A2B931 /* Main.storyboard */,
 				FA5FCECD1F687C33000757F4 /* Controllers */,
 				FA5FCEC21F68725B000757F4 /* Models */,
 				FA4D879F1FB646DE0068336F /* View Models */,
-				3A8AADC81DF9B85E00A2B931 /* AppDelegate.swift */,
-				3A8AADCC1DF9B85E00A2B931 /* Main.storyboard */,
 				FAA923051FCF5DFC00BB1126 /* CreditsUSDollarsConversion.swift */,
 				FA3E66AF1FCDF0FC007C7BC0 /* MetricBritishConversion.swift */,
 				FA3E66B11FCE05A5007C7BC0 /* DoublesOnly.swift */,

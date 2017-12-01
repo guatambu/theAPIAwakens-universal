@@ -9,6 +9,7 @@
 
 // MARK: need to create implementation for the smallest and largest data properties and stub subsequent data
 // MARK: need to put a limit on the currency conversion BACK to credits as limited to one time then button is disabled
+// MARK: is the currency conversion a possible generic use case?
 
 import UIKit
 
@@ -93,9 +94,12 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         self.vehiclesPickerView.delegate = self
         self.vehiclesPickerView.dataSource = self
-        pickerDataSource = [atAtWalker.name, atST.name, sailBarge.name, sandCrawler.name, stormIVTwinPodCloudCar.name, t16Skyhopper.name, tIEBomber.name, x34Landspeeder.name]
- 
         
+        currentVehicleArray = [atST, atAtWalker, sailBarge, sandCrawler, stormIVTwinPodCloudCar, t16Skyhopper, tIEBomber, x34Landspeeder]
+        
+        pickerDataSource = [atAtWalker.name, atST.name, sailBarge.name, sandCrawler.name, stormIVTwinPodCloudCar.name, t16Skyhopper.name, tIEBomber.name, x34Landspeeder.name]
+        
+        findSmallestAndLargest()
         
     }
 
@@ -124,10 +128,6 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
         
-        currentVehicleArray = [atST, atAtWalker, sailBarge, sandCrawler, stormIVTwinPodCloudCar, t16Skyhopper, tIEBomber, x34Landspeeder]
-        
-        // var currentVehicle = Vehicle(id: 1, name: "X-34 Landspeeder", make: "SoroSuub Corporation", cost_in_credits: "10550", length: "3.4", vehicle_class: "repulsorcraft", crew: "1")
-        
         for currentVehicle in currentVehicleArray {
             if pickerDataSource[row] ==  currentVehicle.name {
                 do {
@@ -147,7 +147,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     
-    // Internal Functions
+    // Helper Functions
     func displayVehicleInformation(using vehicleViewModel: VehicleViewModel) {
         vehicleName.text = vehicleViewModel.name
         vehicleMake.text = vehicleViewModel.make
@@ -198,6 +198,45 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         self.present(alertController, animated: true, completion: nil)
     }
+    
+        // finding smallest and largest vehicles 1/2
+    
+    func currentVehicleLengthDictionaryMaker() -> [String: String] {
+        
+        var currentVehicleLengths = [String: String]()
+        let vehicles = currentVehicleArray
+        for vehicle in vehicles {
+            currentVehicleLengths.updateValue(vehicle.length, forKey: vehicle.name)
+        }
+        print(currentVehicleLengths)
+        return currentVehicleLengths
+        
+    }
+    
+        // finding smallest and largest vehicles 2/2
+    func findSmallestAndLargest() {
+        
+        let currentVehicleLengths = currentVehicleLengthDictionaryMaker()
+        
+        let minimum = currentVehicleLengths.min { a, b in a.value < b.value }
+        let maximum = currentVehicleLengths.max { a, b in a.value < b.value }
+        
+        guard let smallest = minimum else {
+            print("couldn't find smallest vehicle")
+            return
+        }
+        
+        guard let largest = maximum else {
+            print("couldn't find largest vehicle")
+            return
+        }
+ 
+        smallestVehicle.text = smallest.key
+        largestVehicle.text = largest.key
+        
+    }
+    
+    
 
 }
 
