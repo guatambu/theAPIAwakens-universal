@@ -7,9 +7,8 @@
 //
 
 
-// MARK: need to create implementation for the smallest and largest data properties and stub subsequent data
-// MARK: need to put a limit on the currency conversion BACK to credits as limited to one time then button is disabled
 // MARK: is the currency conversion a possible generic use case?
+// MARK: set ViewController initial/default data display to the first listed item in the pickerView
 
 import UIKit
 
@@ -47,7 +46,8 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             return
         }
         vehicleLength.text = "\(metricBritishConversion.yardsToMeters(vehicleLength_Double))m"
-        
+        englishConversionButton.isEnabled = true
+        metricConversionButton.isEnabled = false
     }
     @IBAction func convertToEnglishUnits(_ sender: Any) {
         let vehicleLengthText: String? = vehicleLength.text
@@ -56,6 +56,9 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             return
         }
         vehicleLength.text = "\(metricBritishConversion.metersToYards(vehicleLength_Double)) yards"
+        englishConversionButton.isEnabled = false
+        metricConversionButton.isEnabled = true
+        
     }
     
     // Currency Conversion Credits US Dollars
@@ -68,18 +71,22 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     // MARK: need to set button to initially disabled, and then make it enabled after first conversion
     @IBAction func convertToCredits(_ sender: Any) {
         
-        let vehicleCostText: String? = vehicleCost.text
-        guard let vehicleCostValue = vehicleCostText, let vehicleCost_Double = Double(vehicleCostValue.doublesOnly) else {
-            print("error in user cost text")
-            return
+        if USDollarConversionButton.isEnabled == false {
+            let vehicleCostText: String? = vehicleCost.text
+            guard let vehicleCostValue = vehicleCostText, let vehicleCost_Double = Double(vehicleCostValue.doublesOnly) else {
+                print("error in user cost text")
+                return
+            }
+            
+            guard let userRateValue = userInputCurrencyExchangeRate, let userRate_Double = Double(userRateValue.doublesOnly) else {
+                print("error in user input text")
+                return
+            }
+            
+            vehicleCost.text = "\(creditsUSDollarsConversion.convertUSDollarsToCredits(vehicleCost_Double, userRate_Double))"
+            USDollarConversionButton.isEnabled = true
+            creditsConversionButton.isEnabled = false
         }
-        
-        guard let userRateValue = userInputCurrencyExchangeRate, let userRate_Double = Double(userRateValue.doublesOnly) else {
-            print("error in user input text")
-            return
-        }
-        
-        vehicleCost.text = "\(creditsUSDollarsConversion.convertUSDollarsToCredits(vehicleCost_Double, userRate_Double))"
     }
     
     @IBAction func convertToUSDollar(_ sender: Any) {
@@ -92,6 +99,13 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        creditsConversionButton.setTitleColor(UIColor.darkGray, for: .disabled)
+        USDollarConversionButton.setTitleColor(UIColor.darkGray, for: .disabled)
+        metricConversionButton.setTitleColor(UIColor.darkGray, for: .disabled)
+        englishConversionButton.setTitleColor(UIColor.darkGray, for: .disabled)
+        
+        metricConversionButton.isEnabled = false
+        
         self.vehiclesPickerView.delegate = self
         self.vehiclesPickerView.dataSource = self
         
@@ -100,6 +114,9 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         pickerDataSource = [atAtWalker.name, atST.name, sailBarge.name, sandCrawler.name, stormIVTwinPodCloudCar.name, t16Skyhopper.name, tIEBomber.name, x34Landspeeder.name]
         
         findSmallestAndLargest()
+        currencyButtonsActive()
+        
+        pickerView(vehiclesPickerView, didSelectRow: 0, inComponent: 0)
         
     }
 
@@ -133,6 +150,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 do {
                     var currentVehicleModel = try VehicleViewModel(model: currentVehicle)
                     displayVehicleInformation(using: currentVehicleModel)
+                    currencyButtonsActive()
                     print(pickerDataSource[row])
                 } catch Errors_API_Awakens.stringNotInteger {
                     print("ERROR: Object initialization failed: invalid entry on 'length' or 'cost_in_credits' property")
@@ -158,6 +176,18 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
     }
     
+    func currencyButtonsActive() {
+        if vehicleCost.text == "unknown" {
+            creditsConversionButton.isEnabled = false
+            USDollarConversionButton.isEnabled = false
+            
+        } else if vehicleCost.text != "unknown" {
+            creditsConversionButton.isEnabled = false
+            USDollarConversionButton.isEnabled = true
+            
+        }
+    }
+    
     func presentUserInputCurrencyExchangeRateAlert() {
         let alertController = UIAlertController(title: "Exchange Rate", message: "Please enter the value of 1 Galactic Credit in U.S. Dollars($) :", preferredStyle: .alert)
         
@@ -178,7 +208,9 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                         return
                     }
                     
-                    self.vehicleCost.text = "\(self.creditsUSDollarsConversion.convertCreditsToUSDollars(vehicleCost_Double, userRate_Double))"
+                    self.vehicleCost.text = "$\(self.creditsUSDollarsConversion.convertCreditsToUSDollars(vehicleCost_Double, userRate_Double))0"
+                    self.USDollarConversionButton.isEnabled = false
+                    self.creditsConversionButton.isEnabled = true
                     
                 } else {
                     print("no user input")
