@@ -8,22 +8,14 @@
 
 
 // MARK: is the currency conversion a possible generic use case?
-// MARK: set ViewController initial/default data display to the first listed item in the pickerView
+
 
 import UIKit
 
 class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    
-    @IBOutlet weak var vehiclesPickerView: UIPickerView!
-    
-    // Stub Vehicles Data Array
-    var currentVehicleArray: [Vehicle] = []
-    
-    // UIPickerView
-    var pickerDataSource: [String] = [String]()
-    
     // UI IBOutlets
+    @IBOutlet weak var vehiclesPickerView: UIPickerView!
     @IBOutlet weak var largestVehicle: UILabel!
     @IBOutlet weak var smallestVehicle: UILabel!
     @IBOutlet weak var vehicleMaxCrewNumber: UILabel!
@@ -32,12 +24,19 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var vehicleCost: UILabel!
     @IBOutlet weak var vehicleMake: UILabel!
     @IBOutlet weak var vehicleName: UILabel!
-
-    // Metric/British Units Conversion Tool
-    let metricBritishConversion = MetricBritishConversion()
-    
     @IBOutlet weak var metricConversionButton: UIButton!
     @IBOutlet weak var englishConversionButton: UIButton!
+    @IBOutlet weak var creditsConversionButton: UIButton!
+    @IBOutlet weak var USDollarConversionButton: UIButton!
+    
+    // Stub Vehicles Data Array
+    var currentVehicleArray: [Vehicle] = []
+    
+    // UIPickerView
+    var pickerDataSource: [String] = [String]()
+    
+    // Metric/British Units Conversion Tool
+    let metricBritishConversion = MetricBritishConversion()
     
     @IBAction func convertToMetricUnits(_ sender: Any) {
         let vehicleLengthText: String? = vehicleLength.text
@@ -58,37 +57,29 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         vehicleLength.text = "\(metricBritishConversion.metersToYards(vehicleLength_Double)) yards"
         englishConversionButton.isEnabled = false
         metricConversionButton.isEnabled = true
-        
     }
+    
     
     // Currency Conversion Credits US Dollars
     var userInputCurrencyExchangeRate: String? = ""
     let creditsUSDollarsConversion = CreditsUSDollarsConversion()
     
-    @IBOutlet weak var creditsConversionButton: UIButton!
-    @IBOutlet weak var USDollarConversionButton: UIButton!
-    
-    // MARK: need to set button to initially disabled, and then make it enabled after first conversion
     @IBAction func convertToCredits(_ sender: Any) {
-        
         if USDollarConversionButton.isEnabled == false {
             let vehicleCostText: String? = vehicleCost.text
             guard let vehicleCostValue = vehicleCostText, let vehicleCost_Double = Double(vehicleCostValue.doublesOnly) else {
                 print("error in user cost text")
                 return
             }
-            
             guard let userRateValue = userInputCurrencyExchangeRate, let userRate_Double = Double(userRateValue.doublesOnly) else {
                 print("error in user input text")
                 return
             }
-            
             vehicleCost.text = "\(creditsUSDollarsConversion.convertUSDollarsToCredits(vehicleCost_Double, userRate_Double))"
             USDollarConversionButton.isEnabled = true
             creditsConversionButton.isEnabled = false
         }
     }
-    
     @IBAction func convertToUSDollar(_ sender: Any) {
         // See Internal Function at bottom
         presentUserInputCurrencyExchangeRateAlert()
@@ -103,28 +94,44 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         USDollarConversionButton.setTitleColor(UIColor.darkGray, for: .disabled)
         metricConversionButton.setTitleColor(UIColor.darkGray, for: .disabled)
         englishConversionButton.setTitleColor(UIColor.darkGray, for: .disabled)
-        
         metricConversionButton.isEnabled = false
         
         self.vehiclesPickerView.delegate = self
         self.vehiclesPickerView.dataSource = self
-        
         currentVehicleArray = [atST, atAtWalker, sailBarge, sandCrawler, stormIVTwinPodCloudCar, t16Skyhopper, tIEBomber, x34Landspeeder]
-        
         pickerDataSource = [atAtWalker.name, atST.name, sailBarge.name, sandCrawler.name, stormIVTwinPodCloudCar.name, t16Skyhopper.name, tIEBomber.name, x34Landspeeder.name]
         
         findSmallestAndLargest()
         currencyButtonsActive()
-        
         pickerView(vehiclesPickerView, didSelectRow: 0, inComponent: 0)
         
+        let baseURL = URL(string: "https://swapi.co/api/")
+        guard let characterURL = URL(string: "people/1/", relativeTo: baseURL) else {return}
+        
+        let configuration = URLSessionConfiguration.default
+        let session = URLSession(configuration: configuration)
+        let request = URLRequest(url: characterURL)
+        
+        print("log before request on main thread")
+        
+        let dataTask = session.dataTask(with: request) {data, request, error in
+            print(data)
+            print("log from inside completion handler async")
+        }
+        
+        dataTask.resume()
+        
+        print("log after resume()")
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // MARK:UIPickerView
     // The number of picker columns of data
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -141,10 +148,9 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     // Catpure the picker view selection
+    // This method is triggered whenever the user makes a change to the picker selection.
+    // The parameter named row and component represents what was selected.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // This method is triggered whenever the user makes a change to the picker selection.
-        // The parameter named row and component represents what was selected.
-        
         for currentVehicle in currentVehicleArray {
             if pickerDataSource[row] ==  currentVehicle.name {
                 do {
@@ -165,7 +171,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     
-    // Helper Functions
+    // MARK: Helper Functions
     func displayVehicleInformation(using vehicleViewModel: VehicleViewModel) {
         vehicleName.text = vehicleViewModel.name
         vehicleMake.text = vehicleViewModel.make
@@ -173,18 +179,15 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         vehicleLength.text = vehicleViewModel.length
         vehicleClass.text = vehicleViewModel.vehicle_class
         vehicleMaxCrewNumber.text = vehicleViewModel.crew
-        
     }
     
     func currencyButtonsActive() {
         if vehicleCost.text == "unknown" {
             creditsConversionButton.isEnabled = false
             USDollarConversionButton.isEnabled = false
-            
         } else if vehicleCost.text != "unknown" {
             creditsConversionButton.isEnabled = false
             USDollarConversionButton.isEnabled = true
-            
         }
     }
     
@@ -195,19 +198,16 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             if let field = alertController.textFields?[0] {
                 // store user input
                 if field.text != "" {
-                    
                     self.userInputCurrencyExchangeRate = field.text
                     guard let userRateValue = self.userInputCurrencyExchangeRate, let userRate_Double = Double(userRateValue.doublesOnly) else {
                         print("error in user input text")
                         return
                     }
-                    
                     let vehicleCostText: String? = self.vehicleCost.text
                     guard let vehicleCostValue = vehicleCostText, let vehicleCost_Double = Double(vehicleCostValue.doublesOnly) else {
                         print("error in user cost text")
                         return
                     }
-                    
                     self.vehicleCost.text = "$\(self.creditsUSDollarsConversion.convertCreditsToUSDollars(vehicleCost_Double, userRate_Double))0"
                     self.USDollarConversionButton.isEnabled = false
                     self.creditsConversionButton.isEnabled = true
@@ -218,13 +218,11 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 }
             }
         }
-        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
         
         alertController.addTextField { (textField) in
             textField.placeholder = "Email"
         }
-        
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         
@@ -234,7 +232,6 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // finding smallest and largest vehicles 1/2
     
     func currentVehicleLengthDictionaryMaker() -> [String: String] {
-        
         var currentVehicleLengths = [String: String]()
         let vehicles = currentVehicleArray
         for vehicle in vehicles {
@@ -242,34 +239,25 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
         print(currentVehicleLengths)
         return currentVehicleLengths
-        
     }
     
         // finding smallest and largest vehicles 2/2
     func findSmallestAndLargest() {
-        
         let currentVehicleLengths = currentVehicleLengthDictionaryMaker()
         
         let minimum = currentVehicleLengths.min { a, b in a.value < b.value }
         let maximum = currentVehicleLengths.max { a, b in a.value < b.value }
-        
         guard let smallest = minimum else {
             print("couldn't find smallest vehicle")
             return
         }
-        
         guard let largest = maximum else {
             print("couldn't find largest vehicle")
             return
         }
- 
         smallestVehicle.text = smallest.key
         largestVehicle.text = largest.key
-        
     }
-    
-    
-
 }
 
 
