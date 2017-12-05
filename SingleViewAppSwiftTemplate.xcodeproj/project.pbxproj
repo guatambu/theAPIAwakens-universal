@@ -24,6 +24,8 @@
 		FA4D87B81FBB9CE80068336F /* Errors_API_Awakens.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D87B71FBB9CE80068336F /* Errors_API_Awakens.swift */; };
 		FA4D87BC1FBF8DB40068336F /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D87BB1FBF8DB40068336F /* HomeScreenViewController.swift */; };
 		FA52AB511FD245EB00947F4B /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA52AB501FD245EB00947F4B /* JSONDownloader.swift */; };
+		FA52AB531FD61B8000947F4B /* StarWarsAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA52AB521FD61B8000947F4B /* StarWarsAPIClient.swift */; };
+		FA52AB551FD61D4C00947F4B /* StarWarsAPIUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA52AB541FD61D4C00947F4B /* StarWarsAPIUserRequest.swift */; };
 		FA5FCEC61F6872C3000757F4 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCEC51F6872C3000757F4 /* Character.swift */; };
 		FA5FCECA1F6878DB000757F4 /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCEC91F6878DB000757F4 /* Starship.swift */; };
 		FA5FCECC1F6879CD000757F4 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCECB1F6879CD000757F4 /* Vehicle.swift */; };
@@ -71,6 +73,8 @@
 		FA4D87B71FBB9CE80068336F /* Errors_API_Awakens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors_API_Awakens.swift; sourceTree = "<group>"; };
 		FA4D87BB1FBF8DB40068336F /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		FA52AB501FD245EB00947F4B /* JSONDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
+		FA52AB521FD61B8000947F4B /* StarWarsAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsAPIClient.swift; sourceTree = "<group>"; };
+		FA52AB541FD61D4C00947F4B /* StarWarsAPIUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsAPIUserRequest.swift; sourceTree = "<group>"; };
 		FA5FCEC51F6872C3000757F4 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		FA5FCEC91F6878DB000757F4 /* Starship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
 		FA5FCECB1F6879CD000757F4 /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 			children = (
 				3A8AADC81DF9B85E00A2B931 /* AppDelegate.swift */,
 				FA52AB501FD245EB00947F4B /* JSONDownloader.swift */,
+				FA52AB521FD61B8000947F4B /* StarWarsAPIClient.swift */,
 				3A8AADCC1DF9B85E00A2B931 /* Main.storyboard */,
 				FA5FCECD1F687C33000757F4 /* Controllers */,
 				FA5FCEC21F68725B000757F4 /* Models */,
@@ -138,6 +143,7 @@
 				3A8AADCF1DF9B85E00A2B931 /* Assets.xcassets */,
 				3A8AADD11DF9B85E00A2B931 /* LaunchScreen.storyboard */,
 				3A8AADD41DF9B85E00A2B931 /* Info.plist */,
+				FA52AB541FD61D4C00947F4B /* StarWarsAPIUserRequest.swift */,
 			);
 			path = SingleViewAppSwiftTemplate;
 			sourceTree = "<group>";
@@ -329,8 +335,10 @@
 				FA4D87A51FB64B880068336F /* StarshipViewModel.swift in Sources */,
 				FA5FCEC61F6872C3000757F4 /* Character.swift in Sources */,
 				FA3E66B21FCE05A5007C7BC0 /* DoublesOnly.swift in Sources */,
+				FA52AB551FD61D4C00947F4B /* StarWarsAPIUserRequest.swift in Sources */,
 				3A8AADC91DF9B85E00A2B931 /* AppDelegate.swift in Sources */,
 				FA4D87B61FBA3F030068336F /* VehiclesViewController.swift in Sources */,
+				FA52AB531FD61B8000947F4B /* StarWarsAPIClient.swift in Sources */,
 				FAA923061FCF5DFC00BB1126 /* CreditsUSDollarsConversion.swift in Sources */,
 				FA4D87BC1FBF8DB40068336F /* HomeScreenViewController.swift in Sources */,
 				FA52AB511FD245EB00947F4B /* JSONDownloader.swift in Sources */,
