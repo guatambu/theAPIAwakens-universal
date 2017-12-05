@@ -177,7 +177,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         vehicleMake.text = vehicleViewModel.make
         vehicleCost.text = vehicleViewModel.costInCredits
         vehicleLength.text = vehicleViewModel.length
-        vehicleClass.text = vehicleViewModel.vesselClass
+        vehicleClass.text = vehicleViewModel.vehicleClass
         vehicleMaxCrewNumber.text = vehicleViewModel.crew
     }
     

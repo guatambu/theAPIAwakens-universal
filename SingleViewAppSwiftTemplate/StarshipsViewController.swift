@@ -96,7 +96,7 @@ class StarshipsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.
-        var currentStarship = Starship(id: 1, name: "Millenium Falcon", make: "Corellian Engineering Corporation", costInCredits: "100000", length: "34.37", vesselClass: "Light freighter", crew: "4")
+        var currentStarship = Starship(id: "1", name: "Millenium Falcon", make: "Corellian Engineering Corporation", costInCredits: "100000", length: "34.37", starshipClass: "Light freighter", crew: "4")
         
         if pickerDataSource[row] ==  currentStarship.name {
             do {
@@ -117,7 +117,7 @@ class StarshipsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     func displayStartshipInfo(using starshipViewModel: StarshipViewModel) {
         starshipName.text = starshipViewModel.name
         starshipMake.text = starshipViewModel.make
-        starshipClass.text = starshipViewModel.vesselClass
+        starshipClass.text = starshipViewModel.starshipClass
         starshipCost.text = starshipViewModel.costInCredits
         starshipLength.text = starshipViewModel.length
         starshipMaxCrewNumber.text = starshipViewModel.crew
