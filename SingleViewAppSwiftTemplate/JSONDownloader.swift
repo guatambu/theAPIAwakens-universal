@@ -20,9 +20,29 @@ class JSONDownloader {
         self.init(configuration: .default)
     }
     
-    func jsonTask(wth request: URLRequest) -> URLSessionDataTask {
-        let task = session.dataTask(with: request) {data, request, error in
-            
+    typealias JSON = [String: AnyObject]
+    
+    func jsonTask(wth request: URLRequest, completionHandler completion: @escaping (JSON?, Errors_API_Awakens?) -> Void) -> URLSessionDataTask {
+        let task = session.dataTask(with: request) {data, response, error in
+            // Convert to HTTP response
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(nil, .requestFailed("the network request failed"))
+                return
+            }
+            if httpResponse.statusCode == 200 {
+                if let data = data {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject]
+                        completion(json, nil)
+                    } catch {
+                        completion(nil, .jsonConversionFailure("there was an error in the JSON data conversion"))
+                    }
+                } else{
+                    completion(nil, .invalidData("the data is invlaid"))
+                }
+            } else {
+                completion(nil, .responseUnsuccessful("response unsuccessful"))
+            }
         }
         return task
     }
