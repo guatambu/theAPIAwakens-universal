@@ -2,7 +2,7 @@
 //  StarWarsAPIClient.swift
 //  SingleViewAppSwiftTemplate
 //
-//  Created by Kelly Johnson on 12/4/17.
+//  Created by Michael Guatambu Davis on 12/4/17.
 //  Copyright © 2017 Treehouse. All rights reserved.
 //
 
@@ -15,7 +15,13 @@ class StarWarsAPIClient {
     
     let downloader = JSONDownloader()
     
-    func getStarWarsUserRequest(with userRequest: StarWarsAPIUserRequest, completionHandler completion: @escaping (/*currentSomething/entity*/, Errors_API_Awakens)) {
+    typealias StarWarsEntityCompletionHandler = (StarWarsEntity?, Errors_API_Awakens?) -> Void
+    
+    func getStarWarsUserRequest(with starWarsEntity: StarWarsEntity, completionHandler completion: @escaping StarWarsEntityCompletionHandler) {
+        guard let url = URL(string: starWarsEntity.entityType, relativeTo: baseURL) else {
+            completion(nil, .invalidURL("the requested URL was invlaid"))
+            return
+        }
         
     }
 }

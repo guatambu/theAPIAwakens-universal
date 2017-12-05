@@ -16,5 +16,6 @@ enum Errors_API_Awakens: Error {
     case responseUnsuccessful(String)
     case invalidData(String)
     case jsonConversionFailure(String)
+    case invalidURL(String)
     
 }

@@ -2,7 +2,7 @@
 //  JSONDownloader.swift
 //  SingleViewAppSwiftTemplate
 //
-//  Created by Kelly Johnson on 12/1/17.
+//  Created by Michael Guatambu Davis on 12/1/17.
 //  Copyright © 2017 Treehouse. All rights reserved.
 //
 
@@ -22,7 +22,9 @@ class JSONDownloader {
     
     typealias JSON = [String: AnyObject]
     
-    func jsonTask(wth request: URLRequest, completionHandler completion: @escaping (JSON?, Errors_API_Awakens?) -> Void) -> URLSessionDataTask {
+    typealias JSONDonwloaderCompletionHandler = (JSON?, Errors_API_Awakens?) -> Void
+    
+    func jsonTask(wth request: URLRequest, completionHandler completion: @escaping JSONDonwloaderCompletionHandler) -> URLSessionDataTask {
         let task = session.dataTask(with: request) {data, response, error in
             // Convert to HTTP response
             guard let httpResponse = response as? HTTPURLResponse else {

@@ -2,7 +2,7 @@
 //  StarWarsAPIUserRequest.swift
 //  SingleViewAppSwiftTemplate
 //
-//  Created by Kelly Johnson on 12/4/17.
+//  Created by Michael Guatambu Davis on 12/4/17.
 //  Copyright © 2017 Treehouse. All rights reserved.
 //
 
