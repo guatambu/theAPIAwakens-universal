@@ -106,11 +106,11 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         pickerView(vehiclesPickerView, didSelectRow: 0, inComponent: 0)
         
         let baseURL = URL(string: "https://swapi.co/api/")
-        guard let characterURL = URL(string: "people/1/", relativeTo: baseURL) else {return}
+        guard let vehicleURL = URL(string: "people/1/", relativeTo: baseURL) else {return}
         
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration)
-        let request = URLRequest(url: characterURL)
+        let request = URLRequest(url: vehicleURL)
         
         print("log before request on main thread")
         
@@ -159,7 +159,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                     currencyButtonsActive()
                     print(pickerDataSource[row])
                 } catch Errors_API_Awakens.stringNotInteger {
-                    print("ERROR: Object initialization failed: invalid entry on 'length' or 'cost_in_credits' property")
+                    print("ERROR: Object initialization failed: invalid entry on 'length' or 'costInCredits' property")
                 } catch {
                     print("error in API packaged JSON")
                 }
@@ -175,9 +175,9 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func displayVehicleInformation(using vehicleViewModel: VehicleViewModel) {
         vehicleName.text = vehicleViewModel.name
         vehicleMake.text = vehicleViewModel.make
-        vehicleCost.text = vehicleViewModel.cost_in_credits
+        vehicleCost.text = vehicleViewModel.costInCredits
         vehicleLength.text = vehicleViewModel.length
-        vehicleClass.text = vehicleViewModel.vehicle_class
+        vehicleClass.text = vehicleViewModel.vesselClass
         vehicleMaxCrewNumber.text = vehicleViewModel.crew
     }
     

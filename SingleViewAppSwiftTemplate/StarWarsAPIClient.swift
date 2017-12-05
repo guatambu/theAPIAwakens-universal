@@ -22,6 +22,10 @@ class StarWarsAPIClient {
             completion(nil, .invalidURL("the requested URL was invlaid"))
             return
         }
+        let request = URLRequest(url: url)
+        let task = downloader.jsonTask(wth: request) { json, error in 
+            
+        }
         
     }
 }

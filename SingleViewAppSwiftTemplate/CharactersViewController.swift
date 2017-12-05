@@ -104,7 +104,7 @@ class CharactersViewController: UIViewController, UIPickerViewDelegate, UIPicker
         // This method is triggered whenever the user makes a change to the picker selection.
         // The parameter named row and component represents what was selected.''
         
-        var currentCharacter = Character(id: 1, name: "Luke Skywalker", birth_year: "19BBY", homeworld: "Tatooine", height: "172", eyes: "blue", hair: "blonde")
+        var currentCharacter = Character(id: 1, name: "Luke Skywalker", birthYear: "19BBY", homeworld: "Tatooine", height: "172", eyes: "blue", hair: "blonde")
         
         if pickerDataSource[row] ==  currentCharacter.name {
             do {
@@ -124,7 +124,7 @@ class CharactersViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     func displayCharacterInfo(using characterViewModel: CharacterViewModel) {
         characterName.text = characterViewModel.name
-        yearBorn.text = characterViewModel.birth_year
+        yearBorn.text = characterViewModel.birthYear
         homePlanet.text = characterViewModel.homeworld
         height.text = characterViewModel.height
         eyes.text = characterViewModel.eyes
