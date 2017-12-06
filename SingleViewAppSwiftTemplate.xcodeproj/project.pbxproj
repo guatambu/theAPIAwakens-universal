@@ -27,6 +27,7 @@
 		FA52AB531FD61B8000947F4B /* StarWarsAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA52AB521FD61B8000947F4B /* StarWarsAPIClient.swift */; };
 		FA52AB551FD61D4C00947F4B /* StarWarsAPIUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA52AB541FD61D4C00947F4B /* StarWarsAPIUserRequest.swift */; };
 		FA52AB571FD6359000947F4B /* StarWarsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA52AB561FD6359000947F4B /* StarWarsEntity.swift */; };
+		FA52AB5A1FD8B16500947F4B /* StarWarsEntityArrayGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA52AB591FD8B16500947F4B /* StarWarsEntityArrayGenerator.swift */; };
 		FA5FCEC61F6872C3000757F4 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCEC51F6872C3000757F4 /* Character.swift */; };
 		FA5FCECA1F6878DB000757F4 /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCEC91F6878DB000757F4 /* Starship.swift */; };
 		FA5FCECC1F6879CD000757F4 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5FCECB1F6879CD000757F4 /* Vehicle.swift */; };
@@ -77,6 +78,7 @@
 		FA52AB521FD61B8000947F4B /* StarWarsAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsAPIClient.swift; sourceTree = "<group>"; };
 		FA52AB541FD61D4C00947F4B /* StarWarsAPIUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsAPIUserRequest.swift; sourceTree = "<group>"; };
 		FA52AB561FD6359000947F4B /* StarWarsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsEntity.swift; sourceTree = "<group>"; };
+		FA52AB591FD8B16500947F4B /* StarWarsEntityArrayGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsEntityArrayGenerator.swift; sourceTree = "<group>"; };
 		FA5FCEC51F6872C3000757F4 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		FA5FCEC91F6878DB000757F4 /* Starship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
 		FA5FCECB1F6879CD000757F4 /* Vehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
@@ -137,8 +139,8 @@
 				FA52AB521FD61B8000947F4B /* StarWarsAPIClient.swift */,
 				3A8AADCC1DF9B85E00A2B931 /* Main.storyboard */,
 				FA5FCECD1F687C33000757F4 /* Controllers */,
-				FA5FCEC21F68725B000757F4 /* Models */,
 				FA4D879F1FB646DE0068336F /* View Models */,
+				FA5FCEC21F68725B000757F4 /* Models */,
 				FAA923051FCF5DFC00BB1126 /* CreditsUSDollarsConversion.swift */,
 				FA3E66AF1FCDF0FC007C7BC0 /* MetricBritishConversion.swift */,
 				FA3E66B11FCE05A5007C7BC0 /* DoublesOnly.swift */,
@@ -178,13 +180,22 @@
 			name = "View Models";
 			sourceTree = "<group>";
 		};
-		FA5FCEC21F68725B000757F4 /* Models */ = {
+		FA52AB581FD8A79900947F4B /* Endpoint */ = {
 			isa = PBXGroup;
 			children = (
 				FA52AB561FD6359000947F4B /* StarWarsEntity.swift */,
+			);
+			name = Endpoint;
+			sourceTree = "<group>";
+		};
+		FA5FCEC21F68725B000757F4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA52AB581FD8A79900947F4B /* Endpoint */,
 				FA5FCEC51F6872C3000757F4 /* Character.swift */,
 				FA5FCEC91F6878DB000757F4 /* Starship.swift */,
 				FA5FCECB1F6879CD000757F4 /* Vehicle.swift */,
+				FA52AB591FD8B16500947F4B /* StarWarsEntityArrayGenerator.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -341,6 +352,7 @@
 				FA52AB551FD61D4C00947F4B /* StarWarsAPIUserRequest.swift in Sources */,
 				3A8AADC91DF9B85E00A2B931 /* AppDelegate.swift in Sources */,
 				FA4D87B61FBA3F030068336F /* VehiclesViewController.swift in Sources */,
+				FA52AB5A1FD8B16500947F4B /* StarWarsEntityArrayGenerator.swift in Sources */,
 				FA52AB531FD61B8000947F4B /* StarWarsAPIClient.swift in Sources */,
 				FAA923061FCF5DFC00BB1126 /* CreditsUSDollarsConversion.swift in Sources */,
 				FA4D87BC1FBF8DB40068336F /* HomeScreenViewController.swift in Sources */,
