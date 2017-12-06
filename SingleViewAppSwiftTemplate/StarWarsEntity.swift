@@ -12,11 +12,12 @@ import Foundation
 class StarWarsEntity {
 
     var entityType: String
-
+    //var entityTypeArray: 
     
     init(entityType: String) {
         self.entityType = entityType
     }
+    
 }
 
 

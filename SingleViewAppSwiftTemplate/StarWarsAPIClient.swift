@@ -24,8 +24,17 @@ class StarWarsAPIClient {
         }
         let request = URLRequest(url: url)
         let task = downloader.jsonTask(wth: request) { json, error in 
+            guard let json = json else {
+                completion(nil, error)
+                return
+            }
+            guard let currentStarWarsEntityArrayJson = json["results"] as? [[String: String]], let currentStarWarsEntityArray = StarWarsEntity(json: currentStarWarsEntityArrayJson) else {
+                completion(nil, .jsonParsingFailure("failed attempt to parse JSON data"))
+                return
+            }
             
+            completion(currentStarWarsEntityArray, nil)
         }
-        
+        task.resume()
     }
 }
