@@ -13,4 +13,11 @@ class StarWarsEntityArrayGenerator {
     // this class will take the data described above and use it to:
         // 1. initialize each corresponding StarWarsEntity type (people, vehicles, starships) as an instance of their respective StarWarsEntity type
         // 2. append each instance of the StarWarsEntity to the StarWarsEntityArray which will then be used as the data source for the corresponding ViewController and its respective UIPickerView and resulting display items for the app's display information
+    
+    var starWarsArray: [StarWarsEntity]
+    
+    // use initialization to crate the array of StarWarsEntity object instances?
+    init(starWarsArray: [StarWarsEntity]) {
+        self.starWarsArray =
+    }
 }

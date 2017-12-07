@@ -17,8 +17,8 @@ class StarWarsAPIClient {
     
     typealias StarWarsEntityCompletionHandler = (StarWarsEntity?, Errors_API_Awakens?) -> Void
     
-    func getStarWarsUserRequest(with starWarsEntity: StarWarsEntity, completionHandler completion: @escaping StarWarsEntityCompletionHandler) {
-        guard let url = URL(string: starWarsEntity.description, relativeTo: baseURL) else {
+    func getStarWarsUserRequest(with starWarsEntityURLPath: StarWarsURLPaths, completionHandler completion: @escaping StarWarsEntityCompletionHandler) {
+        guard let url = URL(string: starWarsEntityURLPath.description, relativeTo: baseURL) else {
             completion(nil, .invalidURL("the requested URL was invlaid"))
             return
         }
@@ -28,7 +28,7 @@ class StarWarsAPIClient {
                 completion(nil, error)
                 return
             }
-            guard let currentStarWarsEntityArrayJson = json["results"] as? [[String: Any]], let currentStarWarsEntityArray = StarWarsEntity(json: currentStarWarsEntityArrayJson) else {
+            guard let currentStarWarsEntityArrayJson = json["results"] as? [[String: Any]], let currentStarWarsEntityArray = StarWarsEntityArrayGenerator.starWarsArray(json: currentStarWarsEntityArrayJson) else {
                 completion(nil, .jsonParsingFailure("failed attempt to parse JSON data"))
                 return
             }
