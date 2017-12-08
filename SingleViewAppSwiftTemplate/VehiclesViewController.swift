@@ -6,14 +6,23 @@
 //  Copyright © 2017 Treehouse. All rights reserved.
 //
 
-
-// MARK: is the currency conversion a possible generic use case?
-
-
 import UIKit
 
-class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class VehiclesViewController: UIViewController, UIPickerViewDelegate {
 
+    // Star Wars API Client instance
+    // let client = StarWarsAPIClient()
+    
+    // Metric/British Units Conversion Tool
+    let metricBritishConversion = MetricBritishConversion()
+    
+    // Stub Vehicles Data Array
+    var currentVehicleArray = [Vehicle]()
+    
+    // UIPickerView
+    let pickerViewDataSource = PickerViewDataSource()
+    var pickerViewOptionItems = [String]()
+    
     // UI IBOutlets
     @IBOutlet weak var vehiclesPickerView: UIPickerView!
     @IBOutlet weak var largestVehicle: UILabel!
@@ -29,14 +38,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var creditsConversionButton: UIButton!
     @IBOutlet weak var USDollarConversionButton: UIButton!
     
-    // Stub Vehicles Data Array
-    var currentVehicleArray: [Vehicle] = []
     
-    // UIPickerView
-    var pickerDataSource: [String] = [String]()
-    
-    // Metric/British Units Conversion Tool
-    let metricBritishConversion = MetricBritishConversion()
     
     @IBAction func convertToMetricUnits(_ sender: Any) {
         let vehicleLengthText: String? = vehicleLength.text
@@ -85,7 +87,6 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         presentUserInputCurrencyExchangeRateAlert()
     }
     
-    
     // ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,9 +98,11 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         metricConversionButton.isEnabled = false
         
         self.vehiclesPickerView.delegate = self
-        self.vehiclesPickerView.dataSource = self
-        currentVehicleArray = [atST, atAtWalker, sailBarge, sandCrawler, stormIVTwinPodCloudCar, t16Skyhopper, tIEBomber, x34Landspeeder]
-        pickerDataSource = [atAtWalker.name, atST.name, sailBarge.name, sandCrawler.name, stormIVTwinPodCloudCar.name, t16Skyhopper.name, tIEBomber.name, x34Landspeeder.name]
+        self.vehiclesPickerView.dataSource = pickerViewDataSource
+        pickerViewDataSource.update(with: Stub.vehicles)
+        
+        currentVehicleArray = Stub.vehicles
+        getPickerViewOptionItems()
         
         findSmallestAndLargest()
         currencyButtonsActive()
@@ -112,16 +115,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         let session = URLSession(configuration: configuration)
         let request = URLRequest(url: vehicleURL)
         
-        print("log before request on main thread")
-        
-        let dataTask = session.dataTask(with: request) {data, request, error in
-            print(data)
-            print("log from inside completion handler async")
-        }
-        
-        dataTask.resume()
-        
-        print("log after resume()")
+       
     }
 
     
@@ -130,21 +124,12 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // Dispose of any resources that can be recreated.
     }
     
-    
-    // MARK:UIPickerView
-    // The number of picker columns of data
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    // The number of rows of data
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerDataSource.count
-    }
-    
+
+    // MARK: UIPickerView
+   
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerDataSource[row]
+        return Stub.vehicles[row].name
     }
     
     // Catpure the picker view selection
@@ -152,19 +137,19 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     // The parameter named row and component represents what was selected.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         for currentVehicle in currentVehicleArray {
-            if pickerDataSource[row] ==  currentVehicle.name {
+            if pickerViewOptionItems[row] ==  currentVehicle.name {
                 do {
                     var currentVehicleModel = try VehicleViewModel(model: currentVehicle)
                     displayVehicleInformation(using: currentVehicleModel)
                     currencyButtonsActive()
-                    print(pickerDataSource[row])
+                    print(pickerViewOptionItems[row])
                 } catch Errors_API_Awakens.stringNotInteger {
                     print("ERROR: Object initialization failed: invalid entry on 'length' or 'costInCredits' property")
                 } catch {
                     print("error in API packaged JSON")
                 }
             } else {
-                print(pickerDataSource[row])
+                print(pickerViewOptionItems[row])
                 print(currentVehicle.name)
             }
         }
@@ -258,7 +243,21 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         smallestVehicle.text = smallest.key
         largestVehicle.text = largest.key
     }
+    
+    func getPickerViewOptionItems() {
+        for pickerViewItem in pickerViewDataSource.data {
+            pickerViewOptionItems.append(pickerViewItem.name)
+        }
+    }
+    
+    
+    /*
+    func updatepickerDataSource(forPickerView pickerView: UIPickerView) {
+        client.getVehicles(with: StarWarsURLPaths.vehicles) { vehicles, error in self.pickerViewDataSource.update(with: vehicles)}
+    }
+    */
 }
+
 
 
 

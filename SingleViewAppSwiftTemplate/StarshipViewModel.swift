@@ -35,7 +35,7 @@ struct StarshipViewModel {
         
         do {
             guard let costInCreditsInt = Int(model.costInCredits) else {
-                throw Errors_API_Awakens.stringNotInteger("the value of this property is a String not an Integer")
+                throw Errors_API_Awakens.stringNotInteger(message: "the value of this property is a String not an Integer")
             }
             self.costInCredits = "\(costInCreditsInt)"
         } catch Errors_API_Awakens.stringNotInteger {
@@ -43,7 +43,7 @@ struct StarshipViewModel {
         }
         
         guard let length_Double = Double(model.length) else {
-            throw Errors_API_Awakens.stringNotDouble("the value of this property is a String not a Double")
+            throw Errors_API_Awakens.stringNotDouble(message: "the value of this property is a String not a Double")
         }
         self.length = "\(length_Double)m"
         

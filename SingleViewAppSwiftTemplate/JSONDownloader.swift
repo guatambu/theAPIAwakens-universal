@@ -24,11 +24,11 @@ class JSONDownloader {
     
     typealias JSONDonwloaderCompletionHandler = (JSON?, Errors_API_Awakens?) -> Void
     
-    func jsonTask(wth request: URLRequest, completionHandler completion: @escaping JSONDonwloaderCompletionHandler) -> URLSessionDataTask {
+    func jsonTask(with request: URLRequest, completionHandler completion: @escaping JSONDonwloaderCompletionHandler) -> URLSessionDataTask {
         let task = session.dataTask(with: request) {data, response, error in
             // Convert to HTTP response
             guard let httpResponse = response as? HTTPURLResponse else {
-                completion(nil, .requestFailed("the network request failed"))
+                completion(nil, .requestFailed(message: "the network request failed"))
                 return
             }
             if httpResponse.statusCode == 200 {
@@ -37,13 +37,13 @@ class JSONDownloader {
                         let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject]
                         completion(json, nil)
                     } catch {
-                        completion(nil, .jsonConversionFailure("there was an error in the JSON data conversion"))
+                        completion(nil, .jsonConversionFailure(message: "there was an error in the JSON data conversion"))
                     }
                 } else{
-                    completion(nil, .invalidData("the data is invlaid"))
+                    completion(nil, .invalidData(message: "the data is invlaid"))
                 }
             } else {
-                completion(nil, .responseUnsuccessful("response unsuccessful"))
+                completion(nil, .responseUnsuccessful(message: "response unsuccessful"))
             }
         }
         return task

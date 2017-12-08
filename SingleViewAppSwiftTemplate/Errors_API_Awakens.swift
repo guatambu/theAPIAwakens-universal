@@ -10,13 +10,13 @@ import Foundation
 
 
 enum Errors_API_Awakens: Error {
-    case stringNotInteger(String)
-    case stringNotDouble(String)
-    case requestFailed(String)
-    case responseUnsuccessful(String)
-    case invalidData(String)
-    case jsonConversionFailure(String)
-    case invalidURL(String)
-    case jsonParsingFailure(String)
+    case stringNotInteger(message: String)
+    case stringNotDouble(message: String)
+    case requestFailed(message: String)
+    case responseUnsuccessful(message: String)
+    case invalidData(message: String)
+    case jsonConversionFailure(message: String)
+    case invalidURL(message: String)
+    case jsonParsingFailure(message: String)
     
 }

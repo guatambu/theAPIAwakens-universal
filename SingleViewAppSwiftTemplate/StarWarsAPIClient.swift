@@ -8,6 +8,10 @@
 
 import Foundation
 
+// once bring in the json initializer then can un-comment this class
+
+/*
+
 class StarWarsAPIClient {
     lazy var baseURL: URL = {
         return URL(string: "https://swapi.co/api/")!
@@ -15,26 +19,33 @@ class StarWarsAPIClient {
     
     let downloader = JSONDownloader()
     
-    typealias StarWarsEntityCompletionHandler = (StarWarsEntity?, Errors_API_Awakens?) -> Void
+    typealias VehiclesCompletionHandler = ([Vehicle], Errors_API_Awakens?) -> Void
     
-    func getStarWarsUserRequest(with starWarsEntityURLPath: StarWarsURLPaths, completionHandler completion: @escaping StarWarsEntityCompletionHandler) {
+    func getVehicles(with starWarsEntityURLPath: StarWarsURLPaths, completionHandler completion: @escaping VehiclesCompletionHandler) {
         guard let url = URL(string: starWarsEntityURLPath.description, relativeTo: baseURL) else {
-            completion(nil, .invalidURL("the requested URL was invlaid"))
+            completion([], .invalidURL(message: "the requested URL was invlaid"))
             return
         }
         let request = URLRequest(url: url)
-        let task = downloader.jsonTask(wth: request) { json, error in 
-            guard let json = json else {
-                completion(nil, error)
-                return
+        let task = downloader.jsonTask(with: request) { json, error in 
+            DispatchQueue.main.async {
+                guard let json = json else {
+                    completion([], error)
+                    return
+                }
+                guard let results = json["results"] as? [[String: String]] else {
+                    completion([], .jsonParsingFailure(message: "failed attempt to parse JSON data"))
+                    return
+                }
+                
+                let vehicles = results.flatMap { Vehicle(json: $0) }
+                
+                completion(vehicles, nil)
             }
-            guard let currentStarWarsEntityArrayJson = json["results"] as? [[String: Any]], let currentStarWarsEntityArray = StarWarsEntityArrayGenerator.starWarsArray(json: currentStarWarsEntityArrayJson) else {
-                completion(nil, .jsonParsingFailure("failed attempt to parse JSON data"))
-                return
-            }
-            
-            completion(currentStarWarsEntityArray, nil)
         }
         task.resume()
     }
 }
+
+
+*/
