@@ -312,7 +312,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3A8AADC01DF9B85E00A2B931 /* Build configuration list for PBXProject "SingleViewAppSwiftTemplate" */;
+			buildConfigurationList = 3A8AADC01DF9B85E00A2B931 /* Build configuration list for PBXProject "API Awakens" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -611,7 +611,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A8AADC01DF9B85E00A2B931 /* Build configuration list for PBXProject "SingleViewAppSwiftTemplate" */ = {
+		3A8AADC01DF9B85E00A2B931 /* Build configuration list for PBXProject "API Awakens" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A8AADEB1DF9B85E00A2B931 /* Debug */,

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/*
 struct Stub {
     
     static var people: [Character] {
@@ -24,14 +25,14 @@ struct Stub {
     }
     
     static var vehicles: [Vehicle] {
-        let atAtWalker = Vehicle(id: "1", name: "AT-AT Walker", make: "Kuat Drive Yards, Imperial Department of Military Research", costInCredits: "unknown", length: "20", vehicleClass: "assault walker", crew: "5")
-        let atST = Vehicle(id: "2", name: "AT-ST", make: "Kuat Drive Yards, Imperial Department of Military Research", costInCredits: "unknown", length: "2", vehicleClass: "walker", crew: "2")
-        let sailBarge = Vehicle(id: "3", name: "Sail barge", make: "Ubrikkian Industries Custom Vehicle Division", costInCredits: "285000", length: "30", vehicleClass: "sail barge", crew: "26")
-        let sandCrawler = Vehicle(id: "4", name: "Sand Crawler", make: "Corellia Mining Corporation", costInCredits: "150000", length: "36.8", vehicleClass: "wheeled", crew: "46")
-        let stormIVTwinPodCloudCar = Vehicle(id: "5", name: "Storm IV Twin-Pod cloud car", make: "Bespin Motors", costInCredits: "75000", length: "7", vehicleClass: "repulsorcraft", crew: "2")
-        let t16Skyhopper = Vehicle(id: "6", name: "T-16 skyhopper", make: "Incom Corporation", costInCredits: "14500", length: "10.4", vehicleClass: "repulsorcraft", crew: "1")
-        let tIEBomber = Vehicle(id: "7", name: "TIE bomber", make: "Sienar Fleet Systems", costInCredits: "unknown", length: "7.8", vehicleClass: "space/planetary bomber", crew: "1")
-        let x34Landspeeder = Vehicle(id: "8", name: "X-34 Landspeeder", make: "SoroSuub Corporation", costInCredits: "10550", length: "3.4", vehicleClass: "repulsorcraft", crew: "1")
+        let atAtWalker = Vehicle(name: "AT-AT Walker", make: "Kuat Drive Yards, Imperial Department of Military Research", costInCredits: "unknown", length: "20", vehicleClass: "assault walker", crew: "5")
+        let atST = Vehicle(name: "AT-ST", make: "Kuat Drive Yards, Imperial Department of Military Research", costInCredits: "unknown", length: "2", vehicleClass: "walker", crew: "2")
+        let sailBarge = Vehicle(name: "Sail barge", make: "Ubrikkian Industries Custom Vehicle Division", costInCredits: "285000", length: "30", vehicleClass: "sail barge", crew: "26")
+        let sandCrawler = Vehicle(name: "Sand Crawler", make: "Corellia Mining Corporation", costInCredits: "150000", length: "36.8", vehicleClass: "wheeled", crew: "46")
+        let stormIVTwinPodCloudCar = Vehicle(name: "Storm IV Twin-Pod cloud car", make: "Bespin Motors", costInCredits: "75000", length: "7", vehicleClass: "repulsorcraft", crew: "2")
+        let t16Skyhopper = Vehicle(name: "T-16 skyhopper", make: "Incom Corporation", costInCredits: "14500", length: "10.4", vehicleClass: "repulsorcraft", crew: "1")
+        let tIEBomber = Vehicle(name: "TIE bomber", make: "Sienar Fleet Systems", costInCredits: "unknown", length: "7.8", vehicleClass: "space/planetary bomber", crew: "1")
+        let x34Landspeeder = Vehicle(name: "X-34 Landspeeder", make: "SoroSuub Corporation", costInCredits: "10550", length: "3.4", vehicleClass: "repulsorcraft", crew: "1")
         
         return [atAtWalker, atST, sailBarge, sandCrawler, stormIVTwinPodCloudCar, t16Skyhopper, tIEBomber, x34Landspeeder]
     }
@@ -52,3 +53,5 @@ struct Stub {
     }
     
 }
+ 
+*/

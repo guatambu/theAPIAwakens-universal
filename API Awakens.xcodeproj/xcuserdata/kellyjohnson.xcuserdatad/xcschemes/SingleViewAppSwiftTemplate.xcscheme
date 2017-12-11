@@ -17,7 +17,7 @@
                BlueprintIdentifier = "3A8AADC41DF9B85E00A2B931"
                BuildableName = "SingleViewAppSwiftTemplate.app"
                BlueprintName = "SingleViewAppSwiftTemplate"
-               ReferencedContainer = "container:SingleViewAppSwiftTemplate.xcodeproj">
+               ReferencedContainer = "container:API Awakens.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
@@ -35,7 +36,7 @@
                BlueprintIdentifier = "3A8AADD81DF9B85E00A2B931"
                BuildableName = "SingleViewAppSwiftTemplateTests.xctest"
                BlueprintName = "SingleViewAppSwiftTemplateTests"
-               ReferencedContainer = "container:SingleViewAppSwiftTemplate.xcodeproj">
+               ReferencedContainer = "container:API Awakens.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +46,7 @@
                BlueprintIdentifier = "3A8AADE31DF9B85E00A2B931"
                BuildableName = "SingleViewAppSwiftTemplateUITests.xctest"
                BlueprintName = "SingleViewAppSwiftTemplateUITests"
-               ReferencedContainer = "container:SingleViewAppSwiftTemplate.xcodeproj">
+               ReferencedContainer = "container:API Awakens.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,7 +56,7 @@
             BlueprintIdentifier = "3A8AADC41DF9B85E00A2B931"
             BuildableName = "SingleViewAppSwiftTemplate.app"
             BlueprintName = "SingleViewAppSwiftTemplate"
-            ReferencedContainer = "container:SingleViewAppSwiftTemplate.xcodeproj">
+            ReferencedContainer = "container:API Awakens.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,6 +66,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -78,7 +80,7 @@
             BlueprintIdentifier = "3A8AADC41DF9B85E00A2B931"
             BuildableName = "SingleViewAppSwiftTemplate.app"
             BlueprintName = "SingleViewAppSwiftTemplate"
-            ReferencedContainer = "container:SingleViewAppSwiftTemplate.xcodeproj">
+            ReferencedContainer = "container:API Awakens.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -97,7 +99,7 @@
             BlueprintIdentifier = "3A8AADC41DF9B85E00A2B931"
             BuildableName = "SingleViewAppSwiftTemplate.app"
             BlueprintName = "SingleViewAppSwiftTemplate"
-            ReferencedContainer = "container:SingleViewAppSwiftTemplate.xcodeproj">
+            ReferencedContainer = "container:API Awakens.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
