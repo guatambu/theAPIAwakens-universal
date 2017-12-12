@@ -2,34 +2,26 @@
 
 import UIKit
 
-enum StarWarsURLPaths {
-    
-    case films
-    case people
-    case planets
-    case spaceships
-    case species
-    case vehicles
-}
 
-extension StarWarsURLPaths: CustomStringConvertible {
-    var description: String {
-        switch self {
-        case .films: return "films"
-        case .people: return "people"
-        case .planets: return "planets"
-        case .spaceships: return "spaceships"
-        case .species: return "species"
-        case .vehicles: return "vehicles"
-        }
-    }
-}
-
-
-let x = StarWarsURLPaths.films
-print(x)
-
-
-
+[
+    "length": 36.8,
+    "pilots": <__NSArray0 0x604000007d60>(""),
+    "crew": 46,
+    "name": "Sand Crawler",
+    "films": <__NSArrayI 0x60400022a8a0>(
+    "https://swapi.co/api/films/5/",
+    "https://swapi.co/api/films/1/"),
+    "model": "Digger Crawler",
+    "cost_in_credits": 150000,
+    "cargo_capacity": 50000,
+    "max_atmosphering_speed": 30,
+    "edited": "2014-12-22T18:21:15.523587Z",
+    "created": "2014-12-10T15:36:25.724000Z",
+    "passengers": 30,
+    "vehicle_class": "wheeled",
+    "manufacturer": "Corellia Mining Corporation",
+    "consumables": "2 months",
+    "url": "https://swapi.co/api/vehicles/4/"
+]
 
 

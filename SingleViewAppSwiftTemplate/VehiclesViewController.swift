@@ -16,9 +16,6 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
     // Metric/British Units Conversion Tool
     let metricBritishConversion = MetricBritishConversion()
     
-    // Stub Vehicles Data Array
-    //var currentVehicleArray = [Vehicle]()
-    
     // UIPickerView
     let pickerViewDataSource = PickerViewDataSource()
     var pickerViewOptionItems = [String]()
@@ -91,8 +88,6 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //client.getVehicles(with: <#T##StarWarsURLPaths#>, completionHandler: <#T##StarWarsAPIClient.VehiclesCompletionHandler##StarWarsAPIClient.VehiclesCompletionHandler##([Vehicle], Errors_API_Awakens?) -> Void#>)
-        
         creditsConversionButton.setTitleColor(UIColor.darkGray, for: .disabled)
         USDollarConversionButton.setTitleColor(UIColor.darkGray, for: .disabled)
         metricConversionButton.setTitleColor(UIColor.darkGray, for: .disabled)
@@ -101,23 +96,12 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
         
         self.vehiclesPickerView.delegate = self
         self.vehiclesPickerView.dataSource = pickerViewDataSource
-        //pickerViewDataSource.update(with: Stub.vehicles)
         updatePickerDataSource(forPickerView: vehiclesPickerView)
-        //currentVehicleArray = Stub.vehicles
         getPickerViewOptionItems()
         
         findSmallestAndLargest()
         currencyButtonsActive()
         pickerView(vehiclesPickerView, didSelectRow: 0, inComponent: 0)
-        
-        /*
-        let baseURL = URL(string: "https://swapi.co/api/")
-        guard let vehicleURL = URL(string: "people/1/", relativeTo: baseURL) else {return}
-        
-        let configuration = URLSessionConfiguration.default
-        let session = URLSession(configuration: configuration)
-        let request = URLRequest(url: vehicleURL)
-        */
        
     }
 
@@ -132,6 +116,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
    
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        print(pickerViewDataSource.data[row].name)
         return pickerViewDataSource.data[row].name
     }
     
@@ -140,19 +125,18 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
     // The parameter named row and component represents what was selected.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         for currentVehicle in pickerViewDataSource.data {
-            if pickerViewOptionItems[row] ==  currentVehicle.name {
+            if pickerViewDataSource.data[row].name ==  currentVehicle.name {
                 do {
                     var currentVehicleModel = try VehicleViewModel(model: currentVehicle)
                     displayVehicleInformation(using: currentVehicleModel)
                     currencyButtonsActive()
-                    print(pickerViewOptionItems[row])
+                    print("this is the chosen UIPickerView option: \(currentVehicleModel.name)")
                 } catch Errors_API_Awakens.stringNotInteger {
                     print("ERROR: Object initialization failed: invalid entry on 'length' or 'costInCredits' property")
                 } catch {
                     print("error in API packaged JSON")
                 }
             } else {
-                print(pickerViewOptionItems[row])
                 print(currentVehicle.name)
             }
         }
@@ -226,6 +210,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
         for vehicle in vehicles {
             currentVehicleLengths.updateValue(vehicle.length, forKey: vehicle.name)
         }
+        print("here are the current Vehicle Lengths in an array of dictionaries:")
         print(currentVehicleLengths)
         return currentVehicleLengths
     }
@@ -251,6 +236,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
     func getPickerViewOptionItems() {
         for pickerViewItem in pickerViewDataSource.data {
             pickerViewOptionItems.append(pickerViewItem.name)
+            print("here are the UIPickerView Options Items:")
             print(pickerViewOptionItems)
         }
     }
@@ -262,6 +248,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
 extension VehiclesViewController {
     func updatePickerDataSource(forPickerView pickerView: UIPickerView) {
         client.getVehicles(with: StarWarsURLPaths.vehicles) { vehicles, error in self.pickerViewDataSource.update(with: vehicles)
+            print("here is the UIPickerView Data Source data:")
             print(self.pickerViewDataSource)
             self.vehiclesPickerView.reloadAllComponents()
         }

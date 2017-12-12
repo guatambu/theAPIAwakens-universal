@@ -8,9 +8,6 @@
 
 import Foundation
 
-// once bring in the json initializer then can un-comment this class
-
-
 
 class StarWarsAPIClient {
     lazy var baseURL: URL = {
@@ -24,6 +21,7 @@ class StarWarsAPIClient {
     func getVehicles(with starWarsEntityURLPath: StarWarsURLPaths, completionHandler completion: @escaping VehiclesCompletionHandler) {
         guard let url = URL(string: starWarsEntityURLPath.description, relativeTo: baseURL) else {
             completion([], .invalidURL(message: "the requested URL was invlaid"))
+            print(Errors_API_Awakens.invalidURL(message: "the requested URL was invlaid"))
             return
         }
         let request = URLRequest(url: url)
@@ -31,17 +29,19 @@ class StarWarsAPIClient {
             DispatchQueue.main.async {
                 guard let json = json else {
                     completion([], Errors_API_Awakens.noJSONData(message: "no JSON Data - failed at StarWarsAPIClient.swift line 29?"))
+                    print(Errors_API_Awakens.noJSONData(message: "no JSON Data - failed at StarWarsAPIClient.swift line 29?"))
                     return
                 }
                 guard let results = json["results"] as? [[String: Any]] else {
-                    completion([], .jsonParsingFailure(message: "failed attempt to parse JSON data - JSON data does notcontain 'results'"))
+                    completion([], .jsonParsingFailure(message: "failed attempt to parse JSON data - JSON data does not contain 'results'"))
+                    print(Errors_API_Awakens.jsonParsingFailure(message: "failed attempt to parse JSON data - JSON data does not contain 'results'"))
                     return
                 }
                 
                 let vehicles = results.flatMap { Vehicle(json: $0) }
-                
                 completion(vehicles, nil)
-                print(vehicles)
+                print("\n\n\nhere are the vehicles: \n\(vehicles)")
+                
             }
         }
         task.resume()
