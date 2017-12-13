@@ -101,7 +101,6 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
         
         findSmallestAndLargest()
         currencyButtonsActive()
-        pickerView(vehiclesPickerView, didSelectRow: 0, inComponent: 0)
        
     }
 
@@ -142,8 +141,7 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
         }
     }
     
-    
-    
+
     // MARK: Helper Functions
     func displayVehicleInformation(using vehicleViewModel: VehicleViewModel) {
         vehicleName.text = vehicleViewModel.name
@@ -241,8 +239,6 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
         }
     }
     
-    
-    
 }
 
 extension VehiclesViewController {
@@ -251,6 +247,8 @@ extension VehiclesViewController {
             print("here is the UIPickerView Data Source data:")
             print(self.pickerViewDataSource)
             self.vehiclesPickerView.reloadAllComponents()
+            // to select the first option in the UIPickerView as the "default" info to display in app
+            self.pickerView(self.vehiclesPickerView, didSelectRow: 0, inComponent: 0)
         }
     }
 }

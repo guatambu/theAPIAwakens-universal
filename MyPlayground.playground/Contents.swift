@@ -3,25 +3,55 @@
 import UIKit
 
 
-[
-    "length": 36.8,
-    "pilots": <__NSArray0 0x604000007d60>(""),
-    "crew": 46,
-    "name": "Sand Crawler",
-    "films": <__NSArrayI 0x60400022a8a0>(
-    "https://swapi.co/api/films/5/",
-    "https://swapi.co/api/films/1/"),
-    "model": "Digger Crawler",
-    "cost_in_credits": 150000,
-    "cargo_capacity": 50000,
-    "max_atmosphering_speed": 30,
-    "edited": "2014-12-22T18:21:15.523587Z",
-    "created": "2014-12-10T15:36:25.724000Z",
-    "passengers": 30,
-    "vehicle_class": "wheeled",
-    "manufacturer": "Corellia Mining Corporation",
-    "consumables": "2 months",
-    "url": "https://swapi.co/api/vehicles/4/"
-]
+
+let dict1: [String: Any?] = [
+                                "length": 36.8,
+                                "pilots": (""),
+                                "crew": 46,
+                                "name": "Sand Crawler",
+                            ]
+
+let dict2: [String: Any?] = [
+                                "length": 25.0,
+                                "pilots": (""),
+                                "crew": 46,
+                                "name": "Sand Crawler",
+                            ]
+
+let dict3: [String: Any?] = [
+                                "length": 14.0,
+                                "pilots": (""),
+                                "crew": 46,
+                                "name": "Sand Crawler",
+                            ]
+
+let dict4: [String: Any?] = [
+                                "length": nil,
+                                "pilots": (""),
+                                "crew": 46,
+                                "name": "Sand Crawler",
+                            ]
+
+
+// loop through array of nested dictionaries
+
+// in outermost dictionary, check to see if a specific property is not nil
+
+// if not nil, the value of the checked property becomes the new endpoint
+
+// & a new network call is made repeating the entire process
+
+// if nil, the process stops
+
+
+
+
+
+
+
+
+
+
+
 
 
