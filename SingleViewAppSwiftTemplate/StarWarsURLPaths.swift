@@ -17,6 +17,7 @@ enum StarWarsURLPaths {
     case spaceships
     case species
     case vehicles
+    
 }
 
 extension StarWarsURLPaths: CustomStringConvertible {    
@@ -28,6 +29,7 @@ extension StarWarsURLPaths: CustomStringConvertible {
         case .spaceships: return "spaceships"
         case .species: return "species"
         case .vehicles: return "vehicles"
+        
         }
     }
 }

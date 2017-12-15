@@ -13,6 +13,7 @@
 		3A8AADD31DF9B85E00A2B931 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8AADD11DF9B85E00A2B931 /* LaunchScreen.storyboard */; };
 		3A8AADDE1DF9B85E00A2B931 /* SingleViewAppSwiftTemplateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AADDD1DF9B85E00A2B931 /* SingleViewAppSwiftTemplateTests.swift */; };
 		3A8AADE91DF9B85E00A2B931 /* SingleViewAppSwiftTemplateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8AADE81DF9B85E00A2B931 /* SingleViewAppSwiftTemplateUITests.swift */; };
+		FA157D1C1FE33A6100A8E3E1 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA157D1B1FE33A6100A8E3E1 /* Endpoint.swift */; };
 		FA24D7FE1FDB228000F5A684 /* PickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24D7FD1FDB228000F5A684 /* PickerViewDataSource.swift */; };
 		FA24D8021FDB2F5400F5A684 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24D8011FDB2F5400F5A684 /* Stub.swift */; };
 		FA3E66B01FCDF0FC007C7BC0 /* MetricBritishConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E66AF1FCDF0FC007C7BC0 /* MetricBritishConversion.swift */; };
@@ -65,6 +66,7 @@
 		3A8AADE41DF9B85E00A2B931 /* SingleViewAppSwiftTemplateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SingleViewAppSwiftTemplateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8AADE81DF9B85E00A2B931 /* SingleViewAppSwiftTemplateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleViewAppSwiftTemplateUITests.swift; sourceTree = "<group>"; };
 		3A8AADEA1DF9B85E00A2B931 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA157D1B1FE33A6100A8E3E1 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		FA24D7FD1FDB228000F5A684 /* PickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewDataSource.swift; sourceTree = "<group>"; };
 		FA24D8011FDB2F5400F5A684 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
 		FA3E66AF1FCDF0FC007C7BC0 /* MetricBritishConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricBritishConversion.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				FA52AB561FD6359000947F4B /* StarWarsURLPaths.swift */,
+				FA157D1B1FE33A6100A8E3E1 /* Endpoint.swift */,
 			);
 			name = Endpoint;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				FA52AB571FD6359000947F4B /* StarWarsURLPaths.swift in Sources */,
 				FA4D87A11FB6470A0068336F /* CharacterViewModel.swift in Sources */,
 				FA5FCECA1F6878DB000757F4 /* Starship.swift in Sources */,
+				FA157D1C1FE33A6100A8E3E1 /* Endpoint.swift in Sources */,
 				FA4D87B21FBA3EE00068336F /* CharactersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -101,6 +101,11 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
         
         findSmallestAndLargest()
         currencyButtonsActive()
+        
+        let endpoint = SWAPI.vehicles(page: "1")
+        print(endpoint.request)
+
+        
        
     }
 

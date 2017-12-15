@@ -15,10 +15,15 @@ class StarWarsAPIClient {
     }()
     
     let downloader = JSONDownloader()
+    let session = URLSession.shared
     
     var allCollectedJSON = [String: Any]()
     
     typealias VehiclesCompletionHandler = ([Vehicle], Errors_API_Awakens?) -> Void
+    
+    func getJSON() {
+        
+    }
     
     func getVehicles(with starWarsEntityURLPath: StarWarsURLPaths, completionHandler completion: @escaping VehiclesCompletionHandler) {
         guard let url = URL(string: starWarsEntityURLPath.description, relativeTo: baseURL) else {
@@ -52,6 +57,7 @@ class StarWarsAPIClient {
                              let request = /* Construct request for page number */
                              let task = session.dataTask(with: request) { data, response, error in
                              let json = /* Do all the usual stuff to get the json out */
+                     
                              let currentPage = json["currentPage"]
                              pagedJson[currentPage] = json
                      
