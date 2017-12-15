@@ -80,7 +80,8 @@ class StarWarsAPIClient {
                 }
             
                 let vehicles = results.flatMap { Vehicle(json: $0) }
-                completion(vehicles, nil)
+                let sortedVehicles = vehicles.sorted(by: {$1.name > $0.name})
+                completion(sortedVehicles, nil)
             }
         }
         task.resume()

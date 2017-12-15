@@ -235,7 +235,8 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
 
 extension VehiclesViewController {
     func updatePickerDataSource(forPickerView pickerView: UIPickerView) {
-        client.getVehicles(with: StarWarsURLPaths.vehicles) { vehicles, error in self.pickerViewDataSource.update(with: vehicles)
+        client.getVehicles(with: StarWarsURLPaths.vehicles) { vehicles, error in
+            self.pickerViewDataSource.update(with: vehicles)
             self.vehiclesPickerView.reloadAllComponents()
         // to select the first option in the UIPickerView as the "default" info to display in app
             self.pickerView(self.vehiclesPickerView, didSelectRow: 0, inComponent: 0)
