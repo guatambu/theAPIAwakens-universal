@@ -97,16 +97,9 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
         self.vehiclesPickerView.delegate = self
         self.vehiclesPickerView.dataSource = pickerViewDataSource
         updatePickerDataSource(forPickerView: vehiclesPickerView)
-        getPickerViewOptionItems()
         
-        findSmallestAndLargest()
         currencyButtonsActive()
-        
-        let endpoint = SWAPI.vehicles(page: "1")
-        print(endpoint.request)
 
-        
-       
     }
 
     
@@ -120,7 +113,6 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
    
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        print(pickerViewDataSource.data[row].name)
         return pickerViewDataSource.data[row].name
     }
     
@@ -131,18 +123,18 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
         for currentVehicle in pickerViewDataSource.data {
             if pickerViewDataSource.data[row].name ==  currentVehicle.name {
                 do {
-                    var currentVehicleModel = try VehicleViewModel(model: currentVehicle)
+                    let currentVehicleModel = try VehicleViewModel(model: currentVehicle)
                     displayVehicleInformation(using: currentVehicleModel)
                     currencyButtonsActive()
-                    print("this is the chosen UIPickerView option: \(currentVehicleModel.name)")
+                    //print("this is the chosen UIPickerView option: \(currentVehicleModel.name)")
                 } catch Errors_API_Awakens.stringNotInteger {
                     print("ERROR: Object initialization failed: invalid entry on 'length' or 'costInCredits' property")
                 } catch {
                     print("error in API packaged JSON")
                 }
-            } else {
-                print(currentVehicle.name)
-            }
+            } //else {
+              //  print(currentVehicle.name)
+            //}
         }
     }
     
@@ -207,21 +199,23 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
     
         // finding smallest and largest vehicles 1/2
     
-    func currentVehicleLengthDictionaryMaker() -> [String: String] {
-        var currentVehicleLengths = [String: String]()
+    func currentVehicleLengthDictionaryMaker() -> [String: Double] {
+        var currentVehicleLengths = [String: Double]()
         let vehicles = pickerViewDataSource.data
         for vehicle in vehicles {
-            currentVehicleLengths.updateValue(vehicle.length, forKey: vehicle.name)
+            guard let vehicleLengthDouble = Double(vehicle.length) else {
+                print("found nil value while trying to make the currentVehicleLengths in the Dictionary maker function")
+                return currentVehicleLengths
+            }
+            currentVehicleLengths.updateValue(vehicleLengthDouble, forKey: vehicle.name)
         }
-        print("here are the current Vehicle Lengths in an array of dictionaries:")
-        print(currentVehicleLengths)
         return currentVehicleLengths
     }
     
         // finding smallest and largest vehicles 2/2
     func findSmallestAndLargest() {
         let currentVehicleLengths = currentVehicleLengthDictionaryMaker()
-        
+    
         let minimum = currentVehicleLengths.min { a, b in a.value < b.value }
         let maximum = currentVehicleLengths.max { a, b in a.value < b.value }
         guard let smallest = minimum else {
@@ -232,16 +226,9 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
             print("couldn't find largest vehicle")
             return
         }
-        smallestVehicle.text = smallest.key
-        largestVehicle.text = largest.key
-    }
     
-    func getPickerViewOptionItems() {
-        for pickerViewItem in pickerViewDataSource.data {
-            pickerViewOptionItems.append(pickerViewItem.name)
-            print("here are the UIPickerView Options Items:")
-            print(pickerViewOptionItems)
-        }
+        smallestVehicle.text = String(smallest.key)
+        largestVehicle.text = String(largest.key)
     }
     
 }
@@ -249,11 +236,12 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
 extension VehiclesViewController {
     func updatePickerDataSource(forPickerView pickerView: UIPickerView) {
         client.getVehicles(with: StarWarsURLPaths.vehicles) { vehicles, error in self.pickerViewDataSource.update(with: vehicles)
-            print("here is the UIPickerView Data Source data:")
-            print(self.pickerViewDataSource)
             self.vehiclesPickerView.reloadAllComponents()
-            // to select the first option in the UIPickerView as the "default" info to display in app
+        // to select the first option in the UIPickerView as the "default" info to display in app
             self.pickerView(self.vehiclesPickerView, didSelectRow: 0, inComponent: 0)
+            
+            self.findSmallestAndLargest()
+            
         }
     }
 }

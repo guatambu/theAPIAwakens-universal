@@ -78,15 +78,9 @@ class StarWarsAPIClient {
                     print(Errors_API_Awakens.jsonParsingFailure(message: "failed attempt to parse JSON data - JSON data does not contain 'results'"))
                     return
                 }
-                
-                
-                
-                
-                
+            
                 let vehicles = results.flatMap { Vehicle(json: $0) }
                 completion(vehicles, nil)
-                print("\n\n\nhere are the vehicles: \n\(vehicles)")
-                
             }
         }
         task.resume()
