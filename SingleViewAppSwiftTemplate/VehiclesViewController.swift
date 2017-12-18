@@ -126,15 +126,15 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
                     let currentVehicleModel = try VehicleViewModel(model: currentVehicle)
                     displayVehicleInformation(using: currentVehicleModel)
                     currencyButtonsActive()
-                    //print("this is the chosen UIPickerView option: \(currentVehicleModel.name)")
+                    print("this is the chosen UIPickerView option: \(currentVehicleModel.name)")
                 } catch Errors_API_Awakens.stringNotInteger {
                     print("ERROR: Object initialization failed: invalid entry on 'length' or 'costInCredits' property")
                 } catch {
                     print("error in API packaged JSON")
                 }
-            } //else {
-              //  print(currentVehicle.name)
-            //}
+            } /*else {
+                print(currentVehicle.name)
+            }*/
         }
     }
     
@@ -235,12 +235,12 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
 
 extension VehiclesViewController {
     func updatePickerDataSource(forPickerView pickerView: UIPickerView) {
-        client.getVehicles(with: StarWarsURLPaths.vehicles) { vehicles, error in
-            self.pickerViewDataSource.update(with: vehicles)
+        client.getVehicles(with: SWAPI.vehicles(page: nil)) { vehicles, error in
+            
+            self.pickerViewDataSource.update(with: self.client.allDownloadedVehicles)
             self.vehiclesPickerView.reloadAllComponents()
         // to select the first option in the UIPickerView as the "default" info to display in app
             self.pickerView(self.vehiclesPickerView, didSelectRow: 0, inComponent: 0)
-            
             self.findSmallestAndLargest()
             
         }
