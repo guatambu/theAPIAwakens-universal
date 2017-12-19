@@ -99,7 +99,6 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
         updatePickerDataSource(forPickerView: vehiclesPickerView)
         
         currencyButtonsActive()
-
     }
 
     
@@ -231,6 +230,8 @@ class VehiclesViewController: UIViewController, UIPickerViewDelegate {
         largestVehicle.text = String(largest.key)
     }
     
+    
+    
 }
 
 extension VehiclesViewController {
@@ -245,6 +246,7 @@ extension VehiclesViewController {
             
         }
     }
+    
 }
 
 
