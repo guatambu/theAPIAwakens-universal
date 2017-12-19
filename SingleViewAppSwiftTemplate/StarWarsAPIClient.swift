@@ -66,7 +66,7 @@ class StarWarsAPIClient {
         task.resume()
     }
     
-    
+    /*
     func getStarships(with starWarsEntityURLPath: Endpoint, completionHandler completion: @escaping StarshipsCompletionHandler) {
         endpoint = SWAPI.spaceships(page: nil)
         let task = downloader.jsonTask(with: endpoint.request) { json, error in
@@ -142,7 +142,7 @@ class StarWarsAPIClient {
         task.resume()
     }
     
-    
+    */
     
 }
 

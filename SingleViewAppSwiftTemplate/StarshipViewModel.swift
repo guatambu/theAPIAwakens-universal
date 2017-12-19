@@ -9,30 +9,53 @@
 import Foundation
 
 struct StarshipViewModel {
-    
-    // Starhip ID
-    let id: String
-    // Starship Entity Type
-    let entityType: String
-    // Starship Full name
-    let name: String
-    // Make
-    let make: String
-    // Cost
-    let costInCredits: String
     // Length
-    let length: String
-    // Class
-    let starshipClass: String
+    var length: String
+    // Pilots
+    var pilots: [Any]
     // Crew
-    let crew: String
+    var crew: String
+    // Name
+    var name: String
+    // Films
+    var films: [Any]
+    // Model
+    var model: String
+    // Cost
+    var costInCredits: String
+    // Cargo Capacity
+    var cargoCapacity: String
+    // Maximum Atmosphering Speed
+    var maxAtmospheringSpeed: String
+    //  Last Edited Time Stamp
+    var edited: String
+    // Created Time Stamp
+    var created: String
+    // Passengers
+    var passengers: String
+    // Class
+    var starshipClass: String
+    // HyperDrive Rating
+    var hyperdriveRating: String
+    // MGLT
+    var mglt: String
+    // Consumables
+    var consumables: String
+    // Make
+    var make: String
+    // URL Location
+    var url: String
     
     init(model: Starship) throws {
-        self.id = model.id
-        self.entityType = model.entityType
+        guard let length_Double = Double(model.length) else {
+            throw Errors_API_Awakens.stringNotDouble(message: "the value of this property is a String not a Double")
+        }
+        self.length = "\(length_Double)m"
+        self.pilots = model.pilots
+        self.crew = model.crew
         self.name = model.name
-        self.make = model.make
-        
+        self.films = model.films
+        self.model = model.model
         do {
             guard let costInCreditsInt = Int(model.costInCredits) else {
                 throw Errors_API_Awakens.stringNotInteger(message: "the value of this property is a String not an Integer")
@@ -41,16 +64,18 @@ struct StarshipViewModel {
         } catch Errors_API_Awakens.stringNotInteger {
             self.costInCredits = model.costInCredits
         }
-        
-        guard let length_Double = Double(model.length) else {
-            throw Errors_API_Awakens.stringNotDouble(message: "the value of this property is a String not a Double")
-        }
-        self.length = "\(length_Double)m"
-        
+        self.cargoCapacity = model.cargoCapacity
+        self.maxAtmospheringSpeed = model.maxAtmospheringSpeed
+        self.edited = model.edited
+        self.created = model.created
+        self.passengers = model.passengers
         self.starshipClass = model.starshipClass
-        self.crew = model.crew
-    }
-    
+        self.hyperdriveRating = model.hyperdriveRating
+        self.mglt = model.mglt
+        self.consumables = model.consumables
+        self.make = model.make
+        self.url = model.url
+    }    
 }
 
 

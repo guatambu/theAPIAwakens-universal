@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Character View Controller-->
+        <!--CharactersViewController-->
         <scene sceneID="dS8-SJ-Efx">
             <objects>
-                <viewController id="jDQ-Pf-aYN" userLabel="Character View Controller" customClass="CharactersViewController" customModule="SingleViewAppSwiftTemplate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jDQ-Pf-aYN" userLabel="CharactersViewController" customClass="CharactersViewController" customModule="SingleViewAppSwiftTemplate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HQV-on-9mQ"/>
                         <viewControllerLayoutGuide type="bottom" id="sOZ-9B-Isd"/>
@@ -438,10 +438,10 @@
             </objects>
             <point key="canvasLocation" x="-499" y="-32"/>
         </scene>
-        <!--Vehicle View Controller-->
+        <!--VehiclesViewController-->
         <scene sceneID="WhK-JX-yhf">
             <objects>
-                <viewController id="4ri-ph-OlZ" userLabel="Vehicle View Controller" customClass="VehiclesViewController" customModule="SingleViewAppSwiftTemplate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4ri-ph-OlZ" userLabel="VehiclesViewController" customClass="VehiclesViewController" customModule="SingleViewAppSwiftTemplate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2gH-af-mxZ"/>
                         <viewControllerLayoutGuide type="bottom" id="DFo-Uh-8uu"/>
@@ -796,10 +796,10 @@
             </objects>
             <point key="canvasLocation" x="398" y="-33"/>
         </scene>
-        <!--Starship View Controller-->
+        <!--StarshipsViewController-->
         <scene sceneID="Rst-kH-y3X">
             <objects>
-                <viewController id="zAn-Yk-tJM" userLabel="Starship View Controller" customClass="StarshipsViewController" customModule="SingleViewAppSwiftTemplate" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zAn-Yk-tJM" userLabel="StarshipsViewController" customClass="StarshipsViewController" customModule="SingleViewAppSwiftTemplate" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gKZ-4b-rRb"/>
                         <viewControllerLayoutGuide type="bottom" id="8Nu-qT-q7f"/>

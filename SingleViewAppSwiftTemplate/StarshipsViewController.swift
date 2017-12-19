@@ -2,125 +2,264 @@
 //  StarshipsViewController.swift
 //  SingleViewAppSwiftTemplate
 //
-//  Created by Michael Guatambu Davis on 11/13/17.
+//  Created by Michael Guatambu Davis on 12/19/17.
 //  Copyright © 2017 Treehouse. All rights reserved.
 //
 
-// need to create implementation for the smallest and largest data properties and stub subsequent data
-
 import UIKit
 
-class StarshipsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-
-    @IBOutlet weak var starshipsPickerView: UIPickerView!
-    var pickerDataSource: [String] = [String]()
+class StarshipsViewController: UIViewController {
+    /*
+    // Star Wars API Client instance
+    let client = StarWarsAPIClient()
     
-    @IBOutlet weak var largestStarship: UILabel!
-    @IBOutlet weak var smallestStarship: UILabel!
-    @IBOutlet weak var starshipMaxCrewNumber: UILabel!
-    @IBOutlet weak var starshipLength: UILabel!
-    @IBOutlet weak var starshipCost: UILabel!
-    @IBOutlet weak var starshipClass: UILabel!
-    @IBOutlet weak var starshipMake: UILabel!
-    @IBOutlet weak var starshipName: UILabel!
-    
-    // metric/british units conversion tool
+    // Metric/British Units Conversion Tool
     let metricBritishConversion = MetricBritishConversion()
     
-    @IBOutlet weak var metricUnitsConversionButton: UIButton!
-    @IBOutlet weak var englishUnitsConversionButton: UIButton!
+    // UIPickerView
+    let pickerViewDataSource = PickerViewDataSource()
+    var pickerViewOptionItems = [String]()
     
-    @IBAction func convertToEnglishUnits(_ sender: Any) {
-        let starshipLengthText: String? = starshipLength.text
-        guard let starshipLengthValue = starshipLengthText, let starshipLength_Double = Double(starshipLengthValue.doublesOnly) else {
-            print("error in meters text")
-            return
-        }
-        starshipLength.text = "\(metricBritishConversion.metersToYards(starshipLength_Double)) yards"
-    }
+    
+    
+    
+    // UI IBOutlets
+    @IBOutlet weak var vehiclesPickerView: UIPickerView!
+    @IBOutlet weak var largestVehicle: UILabel!
+    @IBOutlet weak var smallestVehicle: UILabel!
+    @IBOutlet weak var vehicleMaxCrewNumber: UILabel!
+    @IBOutlet weak var vehicleClass: UILabel!
+    @IBOutlet weak var vehicleLength: UILabel!
+    @IBOutlet weak var vehicleCost: UILabel!
+    @IBOutlet weak var vehicleMake: UILabel!
+    @IBOutlet weak var vehicleName: UILabel!
+    @IBOutlet weak var metricConversionButton: UIButton!
+    @IBOutlet weak var englishConversionButton: UIButton!
+    @IBOutlet weak var creditsConversionButton: UIButton!
+    @IBOutlet weak var USDollarConversionButton: UIButton!
+    
+    
+    // Units Conversion Button (Metric/English)
     
     @IBAction func convertToMetricUnits(_ sender: Any) {
-        let starshipLengthText: String? = starshipLength.text
-        guard let starshipLengthValue = starshipLengthText, let starshipLength_Double = Double(starshipLengthValue.doublesOnly) else {
+        let vehicleLengthText: String? = vehicleLength.text
+        guard let vehicleLengthValue = vehicleLengthText, let vehicleLength_Double = Double(vehicleLengthValue.doublesOnly) else {
             print("error in yards text")
             return
         }
-        starshipLength.text = "\(metricBritishConversion.yardsToMeters(starshipLength_Double))m"
+        vehicleLength.text = "\(metricBritishConversion.yardsToMeters(vehicleLength_Double))m"
+        englishConversionButton.isEnabled = true
+        metricConversionButton.isEnabled = false
+    }
+    @IBAction func convertToEnglishUnits(_ sender: Any) {
+        let vehicleLengthText: String? = vehicleLength.text
+        guard let vehicleLengthValue = vehicleLengthText, let vehicleLength_Double = Double(vehicleLengthValue.doublesOnly) else {
+            print("error in meters text")
+            return
+        }
+        vehicleLength.text = "\(metricBritishConversion.metersToYards(vehicleLength_Double)) yards"
+        englishConversionButton.isEnabled = false
+        metricConversionButton.isEnabled = true
     }
     
     
+    // Currency Conversion Credits US Dollars
+    var userInputCurrencyExchangeRate: String? = ""
+    let creditsUSDollarsConversion = CreditsUSDollarsConversion()
+    
+    @IBAction func convertToCredits(_ sender: Any) {
+        if USDollarConversionButton.isEnabled == false {
+            let vehicleCostText: String? = vehicleCost.text
+            guard let vehicleCostValue = vehicleCostText, let vehicleCost_Double = Double(vehicleCostValue.doublesOnly) else {
+                print("error in user cost text")
+                return
+            }
+            guard let userRateValue = userInputCurrencyExchangeRate, let userRate_Double = Double(userRateValue.doublesOnly) else {
+                print("error in user input text")
+                return
+            }
+            vehicleCost.text = "\(creditsUSDollarsConversion.convertUSDollarsToCredits(vehicleCost_Double, userRate_Double))"
+            USDollarConversionButton.isEnabled = true
+            creditsConversionButton.isEnabled = false
+        }
+    }
+    @IBAction func convertToUSDollar(_ sender: Any) {
+        // See Internal Function at bottom
+        presentUserInputCurrencyExchangeRateAlert()
+    }
+
+    
+    
+    
+    
+    
+    // ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-        /*
-        let currentStarship = Starship(id: 1, name: "Millenium Falcon", make: "Corellian Engineering Corporation", cost_in_credits: "100000", length: "34.37", starship_class: "Light freighter", crew: "4")
-        do {
-            let currentStarshipModel = try StarshipViewModel(model: currentStarship)
-            displayStartshipInfo(using: currentStarshipModel)
-        } catch Errors_API_Awakens.stringNotInteger {
-            print("invalid entry on 'length' property")
-        } catch {
-            print("error in API pachkaged JSON")
-        }
-        */
+        creditsConversionButton.setTitleColor(UIColor.darkGray, for: .disabled)
+        USDollarConversionButton.setTitleColor(UIColor.darkGray, for: .disabled)
+        metricConversionButton.setTitleColor(UIColor.darkGray, for: .disabled)
+        englishConversionButton.setTitleColor(UIColor.darkGray, for: .disabled)
+        metricConversionButton.isEnabled = false
         
-        self.starshipsPickerView.delegate = self
-        self.starshipsPickerView.dataSource = self
-        pickerDataSource = ["Millenium Falcon", "Coronet", "Imperial Light Cruiser", "Imperial Star Destroyer", "Naboo Royal Starship", "Nebulon-B Frigate", "Republic Attack Cruiser", "Death Star", "Mon Calamari Starship"]
+        self.vehiclesPickerView.delegate = self
+        self.vehiclesPickerView.dataSource = pickerViewDataSource
+        updatePickerDataSource(forPickerView: vehiclesPickerView)
+        
+        currencyButtonsActive()
     }
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     
-    // The number of picker columns of data
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    // The number of rows of data
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerDataSource.count
-    }
+    // MARK: UIPickerView
     
     // The data to return for the row and component (column) that's being passed in
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerDataSource[row]
+        return pickerViewDataSource.data[row].name
     }
     
     // Catpure the picker view selection
+    // This method is triggered whenever the user makes a change to the picker selection.
+    // The parameter named row and component represents what was selected.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // This method is triggered whenever the user makes a change to the picker selection.
-        // The parameter named row and component represents what was selected.
-        var currentStarship = Starship(id: "1", name: "Millenium Falcon", make: "Corellian Engineering Corporation", costInCredits: "100000", length: "34.37", starshipClass: "Light freighter", crew: "4")
-        
-        if pickerDataSource[row] ==  currentStarship.name {
-            do {
-                var currentStarshipModel = try StarshipViewModel(model: currentStarship)
-                displayStartshipInfo(using: currentStarshipModel)
-                print(pickerDataSource[row])
-            } catch Errors_API_Awakens.stringNotInteger {
-                print("invalid entry on 'length' property")
-            } catch {
-                print("error in API packaged JSON")
-            }
-        } else {
-            print(pickerDataSource[row])
+        for currentVehicle in pickerViewDataSource.data {
+            if pickerViewDataSource.data[row].name ==  currentVehicle.name {
+                do {
+                    let currentVehicleModel = try VehicleViewModel(model: currentVehicle)
+                    displayVehicleInformation(using: currentVehicleModel)
+                    currencyButtonsActive()
+                    print("this is the chosen UIPickerView option: \(currentVehicleModel.name)")
+                } catch Errors_API_Awakens.stringNotInteger {
+                    print("ERROR: Object initialization failed: invalid entry on 'length' or 'costInCredits' property")
+                } catch {
+                    print("error in API packaged JSON")
+                }
+            } /*else {
+             print(currentVehicle.name)
+             }*/
         }
     }
     
-
-    func displayStartshipInfo(using starshipViewModel: StarshipViewModel) {
-        starshipName.text = starshipViewModel.name
-        starshipMake.text = starshipViewModel.make
-        starshipClass.text = starshipViewModel.starshipClass
-        starshipCost.text = starshipViewModel.costInCredits
-        starshipLength.text = starshipViewModel.length
-        starshipMaxCrewNumber.text = starshipViewModel.crew
+    
+    // MARK: Helper Functions
+    func displayVehicleInformation(using vehicleViewModel: VehicleViewModel) {
+        vehicleName.text = vehicleViewModel.name
+        vehicleMake.text = vehicleViewModel.make
+        vehicleCost.text = vehicleViewModel.costInCredits
+        vehicleLength.text = vehicleViewModel.length
+        vehicleClass.text = vehicleViewModel.vehicleClass
+        vehicleMaxCrewNumber.text = vehicleViewModel.crew
     }
-
+    
+    func currencyButtonsActive() {
+        if vehicleCost.text == "unknown" {
+            creditsConversionButton.isEnabled = false
+            USDollarConversionButton.isEnabled = false
+        } else if vehicleCost.text != "unknown" {
+            creditsConversionButton.isEnabled = false
+            USDollarConversionButton.isEnabled = true
+        }
+    }
+    
+    func presentUserInputCurrencyExchangeRateAlert() {
+        let alertController = UIAlertController(title: "Exchange Rate", message: "Please enter the value of 1 Galactic Credit in U.S. Dollars($) :", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+            if let field = alertController.textFields?[0] {
+                // store user input
+                if field.text != "" {
+                    self.userInputCurrencyExchangeRate = field.text
+                    guard let userRateValue = self.userInputCurrencyExchangeRate, let userRate_Double = Double(userRateValue.doublesOnly) else {
+                        print("error in user input text")
+                        return
+                    }
+                    let vehicleCostText: String? = self.vehicleCost.text
+                    guard let vehicleCostValue = vehicleCostText, let vehicleCost_Double = Double(vehicleCostValue.doublesOnly) else {
+                        print("error in user cost text")
+                        return
+                    }
+                    self.vehicleCost.text = "$\(self.creditsUSDollarsConversion.convertCreditsToUSDollars(vehicleCost_Double, userRate_Double))0"
+                    self.USDollarConversionButton.isEnabled = false
+                    self.creditsConversionButton.isEnabled = true
+                    
+                } else {
+                    print("no user input")
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Email"
+        }
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    // finding smallest and largest vehicles 1/2
+    
+    func currentVehicleLengthDictionaryMaker() -> [String: Double] {
+        var currentVehicleLengths = [String: Double]()
+        let vehicles = pickerViewDataSource.data
+        for vehicle in vehicles {
+            guard let vehicleLengthDouble = Double(vehicle.length) else {
+                print("found nil value while trying to make the currentVehicleLengths in the Dictionary maker function")
+                return currentVehicleLengths
+            }
+            currentVehicleLengths.updateValue(vehicleLengthDouble, forKey: vehicle.name)
+        }
+        return currentVehicleLengths
+    }
+    
+    // finding smallest and largest vehicles 2/2
+    func findSmallestAndLargest() {
+        let currentVehicleLengths = currentVehicleLengthDictionaryMaker()
+        
+        let minimum = currentVehicleLengths.min { a, b in a.value < b.value }
+        let maximum = currentVehicleLengths.max { a, b in a.value < b.value }
+        guard let smallest = minimum else {
+            print("couldn't find smallest vehicle")
+            return
+        }
+        guard let largest = maximum else {
+            print("couldn't find largest vehicle")
+            return
+        }
+        
+        smallestVehicle.text = String(smallest.key)
+        largestVehicle.text = String(largest.key)
+    }
+ */
 }
+
+/*
+extension StarshipsViewController {
+    func updatePickerDataSource(forPickerView pickerView: UIPickerView) {
+        client.getVehicles(with: SWAPI.spaceships(page: nil)) { starships, error in
+            
+            self.pickerViewDataSource.update(with: self.client.allDownloadedStarships)
+            self.vehiclesPickerView.reloadAllComponents()
+            // to select the first option in the UIPickerView as the "default" info to display in app
+            self.pickerView(self.vehiclesPickerView, didSelectRow: 0, inComponent: 0)
+            self.findSmallestAndLargest()
+            
+        }
+    }
+    
+}
+
+
+
+
+
+
+*/

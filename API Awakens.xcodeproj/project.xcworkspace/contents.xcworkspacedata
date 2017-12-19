@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/kellyjohnson/Desktop/guata_dev/API_Awakens_Swift_Template/API Awakens.xcodeproj">
+      location = "group:/Users/kellyjohnson/Desktop/guata_dev/API_Awakens_Swift_Template/SingleViewAppSwiftTemplate/CharactersViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/kellyjohnson/Desktop/guata_dev/API_Awakens_Swift_Template/SingleViewAppSwiftTemplate/StarshipsViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>
